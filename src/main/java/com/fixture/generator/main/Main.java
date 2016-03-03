@@ -1,6 +1,8 @@
-package com.fixture.generator;
+package com.fixture.generator.main;
 
 import java.io.IOException;
+
+import com.fixture.generator.clazz.generator.ClassGenerator;
 
 public class Main {
 
