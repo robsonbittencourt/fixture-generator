@@ -27,14 +27,4 @@ public class ClassGenerator {
 		new FileBuilder().createFile("LunchFixture", javaClass.toString());
 	}
 
-	// private Lunch lunch = new Lunch(null);
-	//
-	// public static LunchFixture get() {
-	// return new LunchFixture();
-	// }
-	//
-	// public Lunch build() {
-	// return lunch;
-	// }
-
 }
