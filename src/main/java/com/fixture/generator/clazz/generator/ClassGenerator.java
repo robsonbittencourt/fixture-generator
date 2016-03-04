@@ -1,30 +1,38 @@
 package com.fixture.generator.clazz.generator;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
+import com.fixture.generator.base.clazz.Lunch;
 import com.fixture.generator.file.FileBuilder;
 
 public class ClassGenerator {
 
-	public void generate() throws IOException {
-		JavaClassSource javaClass = Roaster.create(JavaClassSource.class);
+	public void generate() {
+		Class<?> originClass = Lunch.class;
+		JavaClassSource classSource = Roaster.create(JavaClassSource.class);
 
-		javaClass.setPackage("com.fixture.generator.test").setName("LunchFixture");
+		List<ClassInformationExtractor> extractors = new ArrayList<>();
+		extractors.add(new PackageExtractor());
+		extractors.add(new ImportExtractor());
+		extractors.add(new NameExtractor());
+		extractors.add(new BaseFixtureExtractor());
 
-		javaClass.addImport("com.fixture.generator.base.clazz.Lunch");
+		for (ClassInformationExtractor extractor : extractors) {
+			classSource = extractor.extract(originClass, classSource);
+		}
 
-		javaClass.addField().setName("lunch").setType("Lunch").setPrivate().setStatic(true)
-				.setLiteralInitializer("new Lunch()");
+		saveToFile(originClass, classSource);
+	}
 
-		javaClass.addMethod().setPublic().setStatic(true).setReturnType("LunchFixture").setName("get")
-				.setBody("return new LunchFixture();");
+	private void saveToFile(Class<?> originClass, JavaClassSource classSource) {
+		String path = originClass.getPackage().getName().replace(".", "/");
 
-		javaClass.addMethod().setPublic().setReturnType("Lunch").setName("build").setBody("return lunch;");
-
-		new FileBuilder().createFile("LunchFixture", javaClass.toString());
+		new FileBuilder().createFile(originClass.getSimpleName() + "Fixture", path + "/fixture",
+				classSource.toString());
 	}
 
 }
