@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
-public class ImportExtractor implements ClassInformationExtractor {
+public class ImportBuilder implements ClassInformationBuilder {
 
 	@Override
-	public JavaClassSource extract(Class<?> originClass, JavaClassSource classSource) {
+	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource) {
 		classSource.addImport(originClass.getPackage().getName() + "." + originClass.getSimpleName());
 		classSource.addImport(List.class);
 		classSource.addImport(ArrayList.class);

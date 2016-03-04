@@ -2,10 +2,10 @@ package com.fixture.generator.clazz.generator;
 
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
-public class BaseFixtureExtractor implements ClassInformationExtractor {
+public class BaseFixtureBuilder implements ClassInformationBuilder {
 
 	@Override
-	public JavaClassSource extract(Class<?> originClass, JavaClassSource classSource) {
+	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource) {
 		String className = originClass.getSimpleName();
 		String fieldName = Character.toLowerCase(className.charAt(0)) + className.substring(1);
 

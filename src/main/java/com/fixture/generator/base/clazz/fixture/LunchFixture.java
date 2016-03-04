@@ -1,10 +1,8 @@
 package com.fixture.generator.base.clazz.fixture;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fixture.generator.base.clazz.Lunch;
-
+import java.util.List;
+import java.util.ArrayList;
 public class LunchFixture {
 
 	private static Lunch lunch = new Lunch();
