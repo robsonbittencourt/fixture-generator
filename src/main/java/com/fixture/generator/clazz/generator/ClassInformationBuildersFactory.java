@@ -7,6 +7,7 @@ public class ClassInformationBuildersFactory {
 
 	public static List<ClassInformationBuilder> get() {
 		List<ClassInformationBuilder> classBuilders = new ArrayList<>();
+
 		classBuilders.add(new PackageBuilder());
 		classBuilders.add(new ImportBuilder());
 		classBuilders.add(new NameBuilder());

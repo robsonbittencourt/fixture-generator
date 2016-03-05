@@ -1,12 +1,9 @@
 package com.fixture.generator.base.clazz;
 
-import java.math.BigDecimal;
-
-public class Lunch {
+public class Person {
 
 	private String name;
 	private int age;
-	private BigDecimal balance;
 
 	public String getName() {
 		return name;
@@ -22,14 +19,6 @@ public class Lunch {
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public BigDecimal getBalance() {
-		return balance;
-	}
-
-	public void setBalance(BigDecimal balance) {
-		this.balance = balance;
 	}
 
 }
