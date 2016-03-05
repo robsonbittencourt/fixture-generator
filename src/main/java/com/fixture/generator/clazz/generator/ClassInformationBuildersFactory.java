@@ -11,6 +11,7 @@ public class ClassInformationBuildersFactory {
 		classBuilders.add(new ImportBuilder());
 		classBuilders.add(new NameBuilder());
 		classBuilders.add(new BaseFixtureBuilder());
+		classBuilders.add(new MethodsBuilder());
 
 		return classBuilders;
 	}

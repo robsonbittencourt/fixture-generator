@@ -9,7 +9,7 @@ public class BaseFixtureBuilder implements ClassInformationBuilder {
 		String className = originClass.getSimpleName();
 		String fieldName = Character.toLowerCase(className.charAt(0)) + className.substring(1);
 
-		classSource.addField().setName(fieldName).setType(className).setPrivate().setStatic(true)
+		classSource.addField().setName(fieldName).setType(className).setPrivate()
 				.setLiteralInitializer("new " + className + "()");
 
 		classSource.addMethod().setPublic().setStatic(true).setReturnType(className + "Fixture").setName("get")
