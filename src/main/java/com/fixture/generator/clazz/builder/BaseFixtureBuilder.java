@@ -40,7 +40,7 @@ public class BaseFixtureBuilder implements ClassInformationBuilder {
 		body += "for (int i = 0; i < amount; i++) {\n";
 		body += fieldName + "s.add(this.build());\n";
 		body += "}\n";
-		body += " return " + fieldName + "s;\n";
+		body += "return " + fieldName + "s;";
 
 		classSource.addMethod().setPublic().setReturnType("List<" + className + ">").setName("buildList").setBody(body)
 				.addParameter(Integer.class, "amount");
