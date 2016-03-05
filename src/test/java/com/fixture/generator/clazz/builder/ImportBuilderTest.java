@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.fixture.generator.base.clazz.Person;
 
-public class PackageBuilderTest {
+public class ImportBuilderTest {
 
 	private ClassInformationBuilder builder;
 	private Class<Person> originClass;
@@ -17,16 +17,18 @@ public class PackageBuilderTest {
 
 	@Before
 	public void setUp() {
-		builder = new PackageBuilder();
+		builder = new ImportBuilder();
 		originClass = Person.class;
 		classSource = Roaster.create(JavaClassSource.class);
 	}
 
 	@Test
-	public void shouldAddPackageOfOriginClassWithSufixOnGeneratedClass() {
+	public void shouldAddImportForBaseClassAndLists() {
 		JavaClassSource generatedSource = builder.build(originClass, classSource);
 
-		assertEquals("com.fixture.generator.base.clazz.fixture", generatedSource.getPackage());
+		assertEquals("com.fixture.generator.base.clazz.Person", generatedSource.getImports().get(0).getQualifiedName());
+		assertEquals("java.util.List", generatedSource.getImports().get(1).getQualifiedName());
+		assertEquals("java.util.ArrayList", generatedSource.getImports().get(2).getQualifiedName());
 	}
 
 }
