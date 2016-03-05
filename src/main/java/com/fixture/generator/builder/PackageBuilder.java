@@ -1,4 +1,4 @@
-package com.fixture.generator.clazz.builder;
+package com.fixture.generator.builder;
 
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 

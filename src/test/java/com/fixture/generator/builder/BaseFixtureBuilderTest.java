@@ -1,4 +1,4 @@
-package com.fixture.generator.clazz.builder;
+package com.fixture.generator.builder;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,6 +12,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.fixture.generator.base.clazz.Person;
+import com.fixture.generator.builder.BaseFixtureBuilder;
+import com.fixture.generator.builder.ClassInformationBuilder;
+import com.fixture.generator.builder.ImportBuilder;
 
 public class BaseFixtureBuilderTest {
 

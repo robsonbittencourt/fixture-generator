@@ -1,4 +1,4 @@
-package com.fixture.generator.clazz.builder;
+package com.fixture.generator.builder;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,15 +1,15 @@
-package com.fixture.generator.clazz.builder;
+package com.fixture.generator.builder;
+
+import static com.fixture.generator.util.Utils.lowerFirstLetter;
 
 import org.jboss.forge.roaster.model.source.JavaClassSource;
-
-import com.fixture.generator.util.Utils;
 
 public class BaseFixtureBuilder implements ClassInformationBuilder {
 
 	@Override
 	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource) {
 		String className = originClass.getSimpleName();
-		String fieldName = Utils.lowerFirstLetter(className);
+		String fieldName = lowerFirstLetter(className);
 
 		createBaseField(classSource, className, fieldName);
 		createGetMethod(classSource, className);
