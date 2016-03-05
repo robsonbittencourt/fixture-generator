@@ -1,4 +1,4 @@
-package com.fixture.generator.clazz.generator;
+package com.fixture.generator.clazz.builder;
 
 import static com.fixture.generator.util.Utils.lowerFirstLetter;
 import static com.fixture.generator.util.Utils.upperFirstLetter;

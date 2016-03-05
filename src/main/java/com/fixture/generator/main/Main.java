@@ -3,7 +3,7 @@ package com.fixture.generator.main;
 import java.io.IOException;
 
 import com.fixture.generator.base.clazz.Person;
-import com.fixture.generator.clazz.generator.ClassGenerator;
+import com.fixture.generator.clazz.builder.ClassGenerator;
 
 public class Main {
 
