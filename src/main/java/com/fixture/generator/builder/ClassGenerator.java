@@ -6,10 +6,14 @@ import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
 import com.fixture.generator.file.FileBuilder;
+import com.fixture.generator.validator.FixtureCandidateValidator;
 
 public class ClassGenerator {
 
-	public void generate(Class<?> originClass) {
+	public void generate(Class<?> originClass, String path) {
+		FixtureCandidateValidator validator = new FixtureCandidateValidator();
+		validator.validate(originClass);
+
 		JavaClassSource classSource = Roaster.create(JavaClassSource.class);
 
 		List<ClassInformationBuilder> classBuilders = ClassInformationBuildersFactory.get();
@@ -18,14 +22,11 @@ public class ClassGenerator {
 			classSource = builder.build(originClass, classSource);
 		}
 
-		saveToFile(originClass, classSource);
+		saveToFile(originClass, classSource, path);
 	}
 
-	private void saveToFile(Class<?> originClass, JavaClassSource classSource) {
-		String path = originClass.getPackage().getName().replace(".", "/");
-
-		new FileBuilder().createFile(originClass.getSimpleName() + "Fixture", path + "/fixture",
-				classSource.toString());
+	private void saveToFile(Class<?> originClass, JavaClassSource classSource, String path) {
+		new FileBuilder().createFile(originClass.getSimpleName() + "Fixture", path, classSource.toString());
 	}
 
 }

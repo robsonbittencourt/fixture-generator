@@ -6,10 +6,10 @@ import com.fixture.generator.builder.ClassGenerator;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		ClassGenerator classGenerator = new ClassGenerator();
 
-		classGenerator.generate(Person.class);
+		classGenerator.generate(Person.class, "src/test/java/com/fixture/generator/main/fixture");
 	}
 
 }

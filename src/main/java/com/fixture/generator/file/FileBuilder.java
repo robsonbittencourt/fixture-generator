@@ -7,9 +7,9 @@ import java.io.IOException;
 
 public class FileBuilder {
 
-	public void createFile(String className, String packagePath, String content) {
+	public void createFile(String className, String path, String content) {
 		try {
-			File file = new File("src/main/java/" + packagePath + "/" + className + ".java");
+			File file = new File(path + "/" + className + ".java");
 			file.getParentFile().mkdirs();
 			FileWriter fw = new FileWriter(file.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);

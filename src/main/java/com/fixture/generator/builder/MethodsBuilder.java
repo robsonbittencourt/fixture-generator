@@ -1,5 +1,6 @@
 package com.fixture.generator.builder;
 
+import static com.fixture.generator.util.Utils.hasSetMethod;
 import static com.fixture.generator.util.Utils.lowerFirstLetter;
 import static com.fixture.generator.util.Utils.upperFirstLetter;
 
@@ -16,6 +17,10 @@ public class MethodsBuilder implements ClassInformationBuilder {
 		String classField = lowerFirstLetter(originClass.getSimpleName());
 
 		for (Field field : originClass.getDeclaredFields()) {
+			if (!hasSetMethod(originClass, field)) {
+				continue;
+			}
+
 			String fieldName = upperFirstLetter(field.getName());
 
 			String body = createMethodBody(classField, field, fieldName);
