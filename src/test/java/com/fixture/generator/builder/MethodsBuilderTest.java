@@ -14,23 +14,26 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.fixture.generator.base.clazz.Person;
+import com.fxture.generator.configuration.FixtureConfiguration;
 
 public class MethodsBuilderTest {
 	private ClassInformationBuilder builder;
 	private Class<Person> originClass;
 	private JavaClassSource classSource;
+	private FixtureConfiguration fixtureConfiguration;
 
 	@Before
 	public void setUp() {
 		builder = new MethodsBuilder();
 		originClass = Person.class;
 		classSource = Roaster.create(JavaClassSource.class);
-		new ImportBuilder().build(originClass, classSource);
+		fixtureConfiguration = new FixtureConfiguration();
+		new ImportBuilder().build(originClass, classSource, fixtureConfiguration);
 	}
 
 	@Test
 	public void shouldAddCreateWithMethodForEachPropertieOfOriginClass() {
-		JavaClassSource generatedSource = builder.build(originClass, classSource);
+		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
 
 		for (Field field : originClass.getDeclaredFields()) {
 			verifyIfMethodWasCreated(generatedSource, field.getName(), field.getType().getName());

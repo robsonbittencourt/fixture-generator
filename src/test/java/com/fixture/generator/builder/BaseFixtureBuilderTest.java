@@ -12,27 +12,27 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.fixture.generator.base.clazz.Person;
-import com.fixture.generator.builder.BaseFixtureBuilder;
-import com.fixture.generator.builder.ClassInformationBuilder;
-import com.fixture.generator.builder.ImportBuilder;
+import com.fxture.generator.configuration.FixtureConfiguration;
 
 public class BaseFixtureBuilderTest {
 
 	private ClassInformationBuilder builder;
 	private Class<Person> originClass;
 	private JavaClassSource classSource;
+	private FixtureConfiguration fixtureConfiguration;
 
 	@Before
 	public void setUp() {
 		builder = new BaseFixtureBuilder();
 		originClass = Person.class;
 		classSource = Roaster.create(JavaClassSource.class);
-		new ImportBuilder().build(originClass, classSource);
+		fixtureConfiguration = new FixtureConfiguration();
+		new ImportBuilder().build(originClass, classSource, fixtureConfiguration);
 	}
 
 	@Test
 	public void shouldCreateBaseField() {
-		JavaClassSource generatedSource = builder.build(originClass, classSource);
+		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
 
 		FieldSource<JavaClassSource> baseField = generatedSource.getFields().get(0);
 		assertEquals("person", baseField.getName());
@@ -42,7 +42,7 @@ public class BaseFixtureBuilderTest {
 
 	@Test
 	public void shouldCreateGetMethod() {
-		JavaClassSource generatedSource = builder.build(originClass, classSource);
+		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
 
 		MethodSource<JavaClassSource> getMethod = generatedSource.getMethod("get");
 		assertNotNull(getMethod);
@@ -54,7 +54,7 @@ public class BaseFixtureBuilderTest {
 
 	@Test
 	public void shouldCreateBuildMethod() {
-		JavaClassSource generatedSource = builder.build(originClass, classSource);
+		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
 
 		MethodSource<JavaClassSource> buildMethod = generatedSource.getMethod("build");
 		assertNotNull(buildMethod);
@@ -65,7 +65,7 @@ public class BaseFixtureBuilderTest {
 
 	@Test
 	public void shouldCreateBuildListMethod() {
-		JavaClassSource generatedSource = builder.build(originClass, classSource);
+		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
 
 		MethodSource<JavaClassSource> buildListMethod = generatedSource.getMethod("buildList", "Integer");
 		assertNotNull(buildListMethod);
