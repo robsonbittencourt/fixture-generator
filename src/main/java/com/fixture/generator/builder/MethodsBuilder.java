@@ -8,10 +8,13 @@ import java.lang.reflect.Field;
 
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
+import com.fxture.generator.configuration.FixtureConfiguration;
+
 public class MethodsBuilder implements ClassInformationBuilder {
 
 	@Override
-	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource) {
+	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource,
+			FixtureConfiguration configuration) {
 		String className = originClass.getSimpleName();
 		String fixtureName = className + "Fixture";
 		String classField = lowerFirstLetter(originClass.getSimpleName());
@@ -21,21 +24,25 @@ public class MethodsBuilder implements ClassInformationBuilder {
 				continue;
 			}
 
-			String fieldName = upperFirstLetter(field.getName());
+			String methodName = buildMethodName(field, configuration);
+			String body = createMethodBody(classField, field);
 
-			String body = createMethodBody(classField, field, fieldName);
-
-			classSource.addMethod().setPublic().setReturnType(fixtureName).setName("with" + fieldName).setBody(body)
+			classSource.addMethod().setPublic().setReturnType(fixtureName).setName(methodName).setBody(body)
 					.addParameter(field.getType(), field.getName());
 		}
 
 		return classSource;
 	}
 
-	private String createMethodBody(String classField, Field field, String fieldName) {
-		String body = "this." + classField + ".set" + fieldName + "(" + field.getName() + "); \n";
+	private String createMethodBody(String classField, Field field) {
+		String body = "this." + classField + ".set" + upperFirstLetter(field.getName()) + "(" + field.getName()
+				+ "); \n";
 		body += "return this;";
 		return body;
+	}
+
+	private String buildMethodName(Field field, FixtureConfiguration configuration) {
+		return configuration.getMethodPrefix() + upperFirstLetter(field.getName());
 	}
 
 }

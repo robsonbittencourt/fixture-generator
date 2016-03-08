@@ -4,10 +4,13 @@ import static com.fixture.generator.util.Utils.lowerFirstLetter;
 
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
+import com.fxture.generator.configuration.FixtureConfiguration;
+
 public class BaseFixtureBuilder implements ClassInformationBuilder {
 
 	@Override
-	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource) {
+	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource,
+			FixtureConfiguration configuration) {
 		String className = originClass.getSimpleName();
 		String fieldName = lowerFirstLetter(className);
 
