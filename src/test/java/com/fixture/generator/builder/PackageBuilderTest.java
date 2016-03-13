@@ -29,7 +29,7 @@ public class PackageBuilderTest {
 	public void shouldAddPackageOfOriginClassWithSufixOnGeneratedClass() {
 		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
 
-		assertEquals("com.fixture.generator.base.clazz.fixture", generatedSource.getPackage());
+		assertEquals("com.fixture.generator.base.clazz", generatedSource.getPackage());
 	}
 
 }

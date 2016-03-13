@@ -1,5 +1,8 @@
 package com.fixture.generator.builder;
 
+import static com.fixture.generator.util.Utils.getPathFromPackageName;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 import java.util.List;
 
 import org.jboss.forge.roaster.Roaster;
@@ -21,7 +24,7 @@ public class ClassGenerator {
 		this.configuration = configuration;
 	}
 
-	public void generate(Class<?> originClass, String path) {
+	public void generate(Class<?> originClass) {
 		FixtureCandidateValidator validator = new FixtureCandidateValidator();
 		validator.validate(originClass);
 
@@ -33,10 +36,18 @@ public class ClassGenerator {
 			classSource = builder.build(originClass, classSource, configuration);
 		}
 
-		saveToFile(originClass, classSource, path);
+		saveToFile(originClass, classSource);
 	}
 
-	private void saveToFile(Class<?> originClass, JavaClassSource classSource, String path) {
+	private void saveToFile(Class<?> originClass, JavaClassSource classSource) {
+		String path = configuration.getRootPath();
+
+		if (isBlank(configuration.getPackageName())) {
+			path += getPathFromPackageName(originClass.getPackage().getName());
+		} else {
+			path += getPathFromPackageName(configuration.getPackageName());
+		}
+
 		new FileBuilder().createFile(originClass.getSimpleName() + "Fixture", path, classSource.toString());
 	}
 
