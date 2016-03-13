@@ -23,4 +23,8 @@ public class Utils {
 		return false;
 	}
 
+	public static String getPathFromPackageName(String packageName) {
+		return packageName.replace(".", "/");
+	}
+
 }

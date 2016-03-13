@@ -13,7 +13,7 @@ public class Main {
 
 		ClassGenerator classGenerator = new ClassGenerator(config);
 
-		classGenerator.generate(Person.class, "src/test/java/com/fixture/generator/main/teste");
+		classGenerator.generate(Person.class);
 	}
 
 }
