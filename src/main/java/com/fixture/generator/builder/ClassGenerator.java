@@ -28,13 +28,11 @@ public class ClassGenerator {
 		FixtureCandidateValidator validator = new FixtureCandidateValidator();
 		validator.validate(originClass);
 
-		JavaClassSource classSource = Roaster.create(JavaClassSource.class);
+		final JavaClassSource classSource = Roaster.create(JavaClassSource.class);
 
 		List<ClassInformationBuilder> classBuilders = ClassInformationBuildersFactory.get();
 
-		for (ClassInformationBuilder builder : classBuilders) {
-			classSource = builder.build(originClass, classSource, configuration);
-		}
+		classBuilders.stream().forEach(b -> b.build(originClass, classSource, configuration));
 
 		saveToFile(originClass, classSource);
 	}
