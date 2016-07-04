@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.robsonbittencourt</groupId>
 	<artifactId>fixture-generator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<build>
 		<pluginManagement>
@@ -16,6 +16,36 @@
 						<source>1.8</source>
 						<target>1.8</target>
 					</configuration>
+				</plugin>
+				<!-- Maven Assembly Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.4.1</version>
+					<configuration>
+						<!-- get all project dependencies -->
+						<descriptorRefs>
+							<descriptorRef>jar-with-dependencies</descriptorRef>
+						</descriptorRefs>
+				        <appendAssemblyId>false</appendAssemblyId>
+						<!-- MainClass in mainfest make a executable jar -->
+						<archive>
+							<manifest>
+								<mainClass>com.mkyong.core.utils.App</mainClass>
+							</manifest>
+						</archive>
+			
+					</configuration>
+					<executions>
+						<execution>
+							<id>make-assembly</id>
+							<!-- bind to the packaging phase -->
+							<phase>package</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -49,5 +79,6 @@
 
 
 	</dependencies>
+
 
 </project>
