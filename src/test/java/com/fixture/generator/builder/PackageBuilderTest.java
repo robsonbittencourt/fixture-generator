@@ -31,5 +31,14 @@ public class PackageBuilderTest {
 
 		assertEquals("com.fixture.generator.base.clazz", generatedSource.getPackage());
 	}
+	
+	@Test
+	public void shouldAddPackgeFromConfiguration() {
+		fixtureConfiguration.setPackageName("com.test");
+		
+		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
+		
+		assertEquals("com.test", generatedSource.getPackage());
+	}
 
 }
