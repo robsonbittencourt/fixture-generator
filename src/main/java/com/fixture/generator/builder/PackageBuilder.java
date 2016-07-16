@@ -9,8 +9,7 @@ import com.fxture.generator.configuration.FixtureConfiguration;
 public class PackageBuilder implements ClassInformationBuilder {
 
 	@Override
-	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource,
-			FixtureConfiguration configuration) {
+	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource, FixtureConfiguration configuration) {
 		classSource.setPackage(buildPackage(originClass, configuration));
 		return classSource;
 	}

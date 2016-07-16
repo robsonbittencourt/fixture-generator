@@ -13,8 +13,7 @@ import com.fxture.generator.configuration.FixtureConfiguration;
 public class MethodsBuilder implements ClassInformationBuilder {
 
 	@Override
-	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource,
-			FixtureConfiguration configuration) {
+	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource, FixtureConfiguration configuration) {
 		String className = originClass.getSimpleName();
 		String fixtureName = className + "Fixture";
 		String classField = lowerFirstLetter(originClass.getSimpleName());
@@ -27,16 +26,14 @@ public class MethodsBuilder implements ClassInformationBuilder {
 			String methodName = buildMethodName(field, configuration);
 			String body = createMethodBody(classField, field);
 
-			classSource.addMethod().setPublic().setReturnType(fixtureName).setName(methodName).setBody(body)
-					.addParameter(field.getType(), field.getName());
+			classSource.addMethod().setPublic().setReturnType(fixtureName).setName(methodName).setBody(body).addParameter(field.getType(), field.getName());
 		}
 
 		return classSource;
 	}
 
 	private String createMethodBody(String classField, Field field) {
-		String body = "this." + classField + ".set" + upperFirstLetter(field.getName()) + "(" + field.getName()
-				+ "); \n";
+		String body = "this." + classField + ".set" + upperFirstLetter(field.getName()) + "(" + field.getName()	+ "); \n";
 		body += "return this;";
 		return body;
 	}

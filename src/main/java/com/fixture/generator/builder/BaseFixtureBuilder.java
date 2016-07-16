@@ -9,8 +9,7 @@ import com.fxture.generator.configuration.FixtureConfiguration;
 public class BaseFixtureBuilder implements ClassInformationBuilder {
 
 	@Override
-	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource,
-			FixtureConfiguration configuration) {
+	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource, FixtureConfiguration configuration) {
 		String className = originClass.getSimpleName();
 		String fieldName = lowerFirstLetter(className);
 
@@ -24,18 +23,15 @@ public class BaseFixtureBuilder implements ClassInformationBuilder {
 	}
 
 	private void createBaseField(JavaClassSource classSource, String className, String fieldName) {
-		classSource.addField().setName(fieldName).setType(className).setPrivate()
-				.setLiteralInitializer("new " + className + "()");
+		classSource.addField().setName(fieldName).setType(className).setPrivate().setLiteralInitializer("new " + className + "()");
 	}
 
 	private void createGetMethod(JavaClassSource classSource, String className) {
-		classSource.addMethod().setPublic().setStatic(true).setReturnType(className + "Fixture").setName("get")
-				.setBody("return new " + className + "Fixture();");
+		classSource.addMethod().setPublic().setStatic(true).setReturnType(className + "Fixture").setName("get").setBody("return new " + className + "Fixture();");
 	}
 
 	private void createBuildMethod(JavaClassSource classSource, String className, String fieldName) {
-		classSource.addMethod().setPublic().setReturnType(className).setName("build")
-				.setBody("return " + fieldName + ";");
+		classSource.addMethod().setPublic().setReturnType(className).setName("build").setBody("return " + fieldName + ";");
 	}
 
 	private void createBuildListMethod(JavaClassSource classSource, String className, String fieldName) {
@@ -45,8 +41,7 @@ public class BaseFixtureBuilder implements ClassInformationBuilder {
 		body += "}\n";
 		body += "return " + fieldName + "s;";
 
-		classSource.addMethod().setPublic().setReturnType("List<" + className + ">").setName("buildList").setBody(body)
-				.addParameter(Integer.class, "amount");
+		classSource.addMethod().setPublic().setReturnType("List<" + className + ">").setName("buildList").setBody(body).addParameter(Integer.class, "amount");
 	}
 
 }

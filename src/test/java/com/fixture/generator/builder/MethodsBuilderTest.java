@@ -38,12 +38,11 @@ public class MethodsBuilderTest {
 		for (Field field : originClass.getDeclaredFields()) {
 			verifyIfMethodWasCreated(generatedSource, field.getName(), field.getType().getName());
 		}
-
 	}
 
 	private void verifyIfMethodWasCreated(JavaClassSource generatedSource, String propertieName, String parameterType) {
-		MethodSource<JavaClassSource> method = generatedSource.getMethod("with" + upperFirstLetter(propertieName),
-				parameterType);
+		MethodSource<JavaClassSource> method = generatedSource.getMethod("with" + upperFirstLetter(propertieName), parameterType);
+		
 		assertNotNull(method);
 		assertTrue(method.isPublic());
 		assertEquals("PersonFixture", method.getReturnType().getName());
