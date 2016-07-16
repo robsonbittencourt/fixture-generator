@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.fixture.generator.exception.FixtureGeneratorException;
+
 public class FileBuilder {
 
 	public void createFile(String className, String path, String content) {
@@ -16,7 +18,7 @@ public class FileBuilder {
 			bw.write(content);
 			bw.close();
 		} catch (IOException e) {
-			// TODO
+			throw new FixtureGeneratorException("An error occurred while generating the file: " + e.getMessage());
 		}
 	}
 
