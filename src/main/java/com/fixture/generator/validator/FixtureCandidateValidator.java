@@ -9,8 +9,15 @@ import com.fixture.generator.exception.FixtureGeneratorException;
 public class FixtureCandidateValidator {
 
 	public void validate(Class<?> clazz) {
+		notInTheDefaultPackage(clazz);
 		hasParameterlessPublicConstructor(clazz);
 		hasPropertyWithSetMethod(clazz);
+	}
+	
+	private void notInTheDefaultPackage(Class<?> clazz) {
+		if (clazz.getPackage() == null) {
+			throw new FixtureGeneratorException("Unable to generate fixtures from the default package");
+		}
 	}
 
 	private void hasParameterlessPublicConstructor(Class<?> clazz) {
