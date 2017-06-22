@@ -10,6 +10,10 @@ public class FixtureConfiguration {
 	private String rootPath;
 	private String packageName;
 	private String methodPrefix;
+	private String classNameSuffix;
+	private String methodName;
+	private Class<?> typeClass;
+	private Class<?> entityClass;
 
 	public String getRootPath() {
 		if (StringUtils.isNotBlank(rootPath)) {
@@ -43,4 +47,36 @@ public class FixtureConfiguration {
 		this.methodPrefix = methodPrefix;
 	}
 
+	public String getClassNameSuffix() {
+		return classNameSuffix;
+	}
+
+	public void setClassNameSuffix(String classNameSuffix) {
+		this.classNameSuffix = classNameSuffix;
+	}
+
+	public String getMethodName() {
+		return methodName;
+	}
+
+	public void setMethodName(String methodName) {
+		this.methodName = methodName;
+	}
+
+	public Class<?> getTypeClass() {
+		return typeClass;
+	}
+
+	public void setTypeClass(Class<?> typeClass) {
+		this.typeClass = typeClass;
+	}
+
+	public Class<?> getEntityClass() {
+		return entityClass;
+	}
+
+	public void setEntityClass(Class<?> entityClass) {
+		this.entityClass = entityClass;
+	}
+	
 }

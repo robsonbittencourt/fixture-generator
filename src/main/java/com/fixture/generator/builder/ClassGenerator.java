@@ -5,6 +5,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
@@ -24,13 +25,23 @@ public class ClassGenerator {
 		this.configuration = configuration;
 	}
 
-	public void generate(Class<?> originClass) {
+	public void generateFixture(Class<?> originClass) {
 		FixtureCandidateValidator validator = new FixtureCandidateValidator();
 		validator.validate(originClass);
 
 		final JavaClassSource classSource = Roaster.create(JavaClassSource.class);
 
-		List<ClassInformationBuilder> classBuilders = ClassInformationBuildersFactory.get();
+		List<ClassInformationBuilder> classBuilders = ClassInformationBuildersFactory.getForFixture();
+
+		classBuilders.stream().forEach(b -> b.build(originClass, classSource, configuration));
+
+		saveToFile(originClass, classSource);
+	}
+
+	public void generateMapperTest(Class<?> originClass) {
+		final JavaClassSource classSource = Roaster.create(JavaClassSource.class);
+
+		List<ClassInformationBuilder> classBuilders = ClassInformationBuildersFactory.getForMapperTest();
 
 		classBuilders.stream().forEach(b -> b.build(originClass, classSource, configuration));
 
@@ -46,7 +57,16 @@ public class ClassGenerator {
 			path += getPathFromPackageName(configuration.getPackageName());
 		}
 
-		new FileBuilder().createFile(originClass.getSimpleName() + "Fixture", path, classSource.toString());
+		new FileBuilder().createFile(originClass.getSimpleName() + validateSuffix(), path, classSource.toString());
 	}
 
+	private String validateSuffix() {
+		if (StringUtils.isBlank(configuration.getClassNameSuffix())) {
+			return "Fixture";
+		}
+
+		return configuration.getClassNameSuffix();
+	}
+
+	
 }
