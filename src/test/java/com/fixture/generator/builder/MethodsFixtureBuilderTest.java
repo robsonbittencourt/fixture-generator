@@ -16,7 +16,7 @@ import org.junit.Test;
 import com.fixture.generator.base.clazz.Person;
 import com.fxture.generator.configuration.FixtureConfiguration;
 
-public class MethodsBuilderTest {
+public class MethodsFixtureBuilderTest {
 	private ClassInformationBuilder builder;
 	private Class<Person> originClass;
 	private JavaClassSource classSource;
@@ -24,7 +24,7 @@ public class MethodsBuilderTest {
 
 	@Before
 	public void setUp() {
-		builder = new MethodsBuilder();
+		builder = new MethodsFixtureBuilder();
 		originClass = Person.class;
 		classSource = Roaster.create(JavaClassSource.class);
 		fixtureConfiguration = new FixtureConfiguration();

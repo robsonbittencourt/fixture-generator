@@ -6,17 +6,18 @@ import static com.fixture.generator.util.Utils.upperFirstLetter;
 
 import java.lang.reflect.Field;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
 import com.fxture.generator.configuration.FixtureConfiguration;
 
-public class MethodsBuilder implements ClassInformationBuilder {
+public class MethodsFixtureBuilder implements ClassInformationBuilder {
 
 	@Override
 	public JavaClassSource build(Class<?> originClass, JavaClassSource classSource,
 			FixtureConfiguration configuration) {
 		String className = originClass.getSimpleName();
-		String fixtureName = className + "Fixture";
+		String fixtureName = className + validateSuffix(configuration);
 		String classField = lowerFirstLetter(originClass.getSimpleName());
 
 		for (Field field : originClass.getDeclaredFields()) {
@@ -32,6 +33,14 @@ public class MethodsBuilder implements ClassInformationBuilder {
 		}
 
 		return classSource;
+	}
+
+	private String validateSuffix(FixtureConfiguration configuration) {
+		if (StringUtils.isBlank(configuration.getClassNameSuffix())) {
+			return "Fixture";
+		}
+		
+		return configuration.getClassNameSuffix();
 	}
 
 	private String createMethodBody(String classField, Field field) {

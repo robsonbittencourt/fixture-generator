@@ -10,10 +10,10 @@ public class Main {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		FixtureConfiguration config = new FixtureConfiguration();
 		config.setMethodPrefix("com");
-
+		
 		ClassGenerator classGenerator = new ClassGenerator(config);
 
-		classGenerator.generate(Person.class);
+		classGenerator.generateFixture(Pais.class);
 	}
 
 }
