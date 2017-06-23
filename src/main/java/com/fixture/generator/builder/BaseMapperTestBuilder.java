@@ -100,9 +100,11 @@ public class BaseMapperTestBuilder implements ClassInformationBuilder {
 			if (name.startsWith("get")) {
 				try {
 					Method typeMethod = type.getDeclaredMethod(name);
-					asserts.add(createNewAssert(entityName, entityMethod, typeName, typeMethod));
+					if (typeMethod != null) {
+						asserts.add(createNewAssert(entityName, entityMethod, typeName, typeMethod));
+					}
 				} catch (Exception e) {
-					e.printStackTrace();
+					continue;
 				}
 			}
 		}
