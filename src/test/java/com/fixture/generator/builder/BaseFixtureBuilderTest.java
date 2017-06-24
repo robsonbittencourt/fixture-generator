@@ -77,7 +77,7 @@ public class BaseFixtureBuilderTest {
 	}
 
 	private String expectedBody() {
-		String body = "List<Person> persons=new ArrayList<Person>();\n";
+		String body = "List<Person> persons=new ArrayList<>();\n";
 		body += " for (int i=0; i < amount; i++) {\n";
 		body += "  persons.add(this.build());\n";
 		body += "}\n";

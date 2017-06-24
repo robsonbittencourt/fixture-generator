@@ -35,7 +35,7 @@ public class BaseFixtureBuilder implements ClassInformationBuilder {
 	}
 
 	private void createBuildListMethod(JavaClassSource classSource, String className, String fieldName) {
-		String body = "List<" + className + ">" + fieldName + "s = new ArrayList<" + className + ">();\n";
+		String body = "List<" + className + ">" + fieldName + "s = new ArrayList<>();\n";
 		body += "for (int i = 0; i < amount; i++) {\n";
 		body += fieldName + "s.add(this.build());\n";
 		body += "}\n";
