@@ -14,12 +14,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
-import com.utility.generator.builder.ClassInformationBuilder;
-import com.utility.generator.builder.ImportBuilder;
-import com.utility.generator.builder.MethodsFixtureBuilder;
 import com.utility.generator.configuration.FixtureConfiguration;
 
 public class MethodsFixtureBuilderTest {
+
 	private ClassInformationBuilder builder;
 	private Class<Person> originClass;
 	private JavaClassSource classSource;
@@ -39,17 +37,22 @@ public class MethodsFixtureBuilderTest {
 		JavaClassSource generatedSource = builder.build(originClass, classSource, fixtureConfiguration);
 
 		for (Field field : originClass.getDeclaredFields()) {
-			verifyIfMethodWasCreated(generatedSource, field.getName(), field.getType().getName());
+			verifyIfMethodWasCreated(generatedSource, field);
 		}
 	}
 
-	private void verifyIfMethodWasCreated(JavaClassSource generatedSource, String propertieName, String parameterType) {
-		MethodSource<JavaClassSource> method = generatedSource.getMethod("with" + upperFirstLetter(propertieName), parameterType);
-		
-		assertNotNull(method);
-		assertTrue(method.isPublic());
-		assertEquals("PersonFixture", method.getReturnType().getName());
-		assertEquals(expectedMethodBody(propertieName), method.getBody());
+	private void verifyIfMethodWasCreated(JavaClassSource generatedSource, Field field) {
+		boolean isValidField = field != null && field.getType() != null && !field.isSynthetic();
+
+		if (isValidField) {
+			MethodSource<JavaClassSource> method = generatedSource.getMethod("with" + upperFirstLetter(field.getName()),
+					field.getType().getName());
+
+			assertNotNull(method);
+			assertTrue(method.isPublic());
+			assertEquals("PersonFixture", method.getReturnType().getName());
+			assertEquals(expectedMethodBody(field.getName()), method.getBody());
+		}
 	}
 
 	private Object expectedMethodBody(String propertieName) {

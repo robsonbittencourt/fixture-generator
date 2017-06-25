@@ -1,3 +1,21 @@
 language: java
+
+addons:
+  sonarcloud:
+    organization: "robsonbittencourt-github"
+    token:
+      secure: "LhQgBUYDqyU2EfMJpEU1L+OHefmifTt407FYFTu1bYzeIKW59Stob4byfAxa55QMyWhD1/qRyKaeljMPsnI80v98N3t/dvHaEw+2DvRtY5EdztCqqvIZi+VnwBdrIg3D00sfEbubrHxxUJiA1hDYU5s21Mkw+ObMPK2Gu+zPoyab/jwmonnCdOc3wneU9t++egYN/3aeGtKk1nqN5j8x2+pPoEK5UOCKweqmcMLg3QfEZbEPnKWt7JhEyhCgBRBgIrzA0jcGHy1FLs0TGqwTzkxFPYveaap1EO4gEvAvxo81MzfcEacMFUvjsGMa2KrbCGvh9nZ9Tgopazkq0q/QiPGSKSYG2ywucaeqzSleYrEv1DhdK0cJ3hPEoe7/AhE5kYy/S2CPfBep24Qfb4rOs+iPqk4wfRnrUJOSgAJtr3xGpR+BmT6dDDAtKPNaWAbg+SSuybRjVWJ24gV+riGeHrXoRstfHEI5ziHujdLCr7QhgMiBK/7YHi9ASlQ1gwUUkV4M3KkqZOB6B49bCBsSm12cp5R1EMeGGVxdHB130nXqOaHxOSUaQhKNqn40M+EunvfAb39P2fraJOS78+dH1F/nF2CGF6brTXVWhhGcCMls1QRwHV0ff14OiwlTBAUbxQ5S/flcg5T9XsTQySpsa4Jw4T1TqFZOmQJQcpbigS8="
+    branches:
+      - master
+      - development
+
 jdk:
   - oraclejdk8
+
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
