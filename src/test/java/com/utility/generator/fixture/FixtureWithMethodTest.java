@@ -11,7 +11,6 @@ import org.junit.Test;
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.configuration.FixtureConfiguration;
-import com.utility.generator.fixture.FixtureWithMethod;
 
 public class FixtureWithMethodTest {
 
@@ -43,10 +42,10 @@ public class FixtureWithMethodTest {
 
 	@Test
 	public void shouldReturnTheBodyOfTheMethod() {
-		String body = "this.person.setName(name);";
+		String body = "this.person.setName(name);\n";
 		body += "return this;";
 
-		assertEquals(body, method.getBody());
+		assertEquals(body, method.body());
 	}
 
 	@Test

@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.clazz.part.GeneratedMethod;
-import com.utility.generator.fixture.FixtureGetMethod;
 
 public class FixtureGetMethodTest {
 
@@ -43,7 +42,7 @@ public class FixtureGetMethodTest {
 
 	@Test
 	public void shouldReturnTheBodyOfTheMethod() {
-		assertEquals("return new PersonFixture();", method.getBody());
+		assertEquals("return new PersonFixture();", method.body());
 	}
 
 }

@@ -27,14 +27,14 @@
 						<descriptorRefs>
 							<descriptorRef>jar-with-dependencies</descriptorRef>
 						</descriptorRefs>
-				        <appendAssemblyId>false</appendAssemblyId>
+						<appendAssemblyId>false</appendAssemblyId>
 						<!-- MainClass in mainfest make a executable jar -->
 						<archive>
 							<manifest>
 								<mainClass>com.mkyong.core.utils.App</mainClass>
 							</manifest>
 						</archive>
-			
+
 					</configuration>
 					<executions>
 						<execution>
@@ -63,6 +63,12 @@
 			<groupId>org.jboss.forge.roaster</groupId>
 			<artifactId>roaster-jdt</artifactId>
 			<version>2.18.2.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
 		</dependency>
 
 		<dependency>

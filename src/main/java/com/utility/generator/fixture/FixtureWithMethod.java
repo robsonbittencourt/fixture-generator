@@ -6,7 +6,9 @@ import static org.jboss.forge.roaster.model.Visibility.PUBLIC;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jboss.forge.roaster.model.Visibility;
 
@@ -14,7 +16,7 @@ import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedParameter;
 import com.utility.generator.configuration.FixtureConfiguration;
 
-public class FixtureWithMethod implements GeneratedMethod {
+public class FixtureWithMethod extends GeneratedMethod {
 
 	private Class<?> originClass;
 	private FixtureConfiguration configuration;
@@ -42,13 +44,19 @@ public class FixtureWithMethod implements GeneratedMethod {
 	}
 
 	@Override
-	public String getBody() {
-		String classField = lowerFirstLetter(originClass.getSimpleName());
+	public String getBodyTemplate() {
+		return "fixture/with-method.vm";
+	}
 
-		String body = "this." + classField + ".set" + upperFirstLetter(field.getName()) + "(" + field.getName() + ");";
-		body += "return this;";
-		
-		return body;
+	@Override
+	public Map<String, Object> getBodyTemplateVariables() {
+		Map<String, Object> variables = new HashMap<>();
+
+		variables.put("fieldName", field.getName());
+		variables.put("setName", upperFirstLetter(field.getName()));
+		variables.put("classField", lowerFirstLetter(originClass.getSimpleName()));
+
+		return variables;
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.fixture.FixturePackage;
 
 public class FixturePackageTest {
 

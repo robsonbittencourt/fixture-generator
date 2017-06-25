@@ -2,11 +2,14 @@ package com.utility.generator.fixture;
 
 import static org.jboss.forge.roaster.model.Visibility.PUBLIC;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.jboss.forge.roaster.model.Visibility;
 
 import com.utility.generator.clazz.part.GeneratedMethod;
 
-public class FixtureGetMethod implements GeneratedMethod {
+public class FixtureGetMethod extends GeneratedMethod {
 
 	private String className;
 
@@ -35,8 +38,17 @@ public class FixtureGetMethod implements GeneratedMethod {
 	}
 
 	@Override
-	public String getBody() {
-		return "return new " + className + "Fixture();";
+	public String getBodyTemplate() {
+		return "fixture/get-method.vm";
+	}
+
+	@Override
+	public Map<String, Object> getBodyTemplateVariables() {
+		Map<String, Object> variables = new HashMap<>();
+
+		variables.put("className", className);
+
+		return variables;
 	}
 
 }

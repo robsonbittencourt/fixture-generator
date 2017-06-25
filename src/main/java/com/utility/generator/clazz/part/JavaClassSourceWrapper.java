@@ -57,7 +57,7 @@ public class JavaClassSourceWrapper {
 		MethodSource<JavaClassSource> methodSource = classSource.addMethod()
 				.setVisibility(generatedMethod.visibility()).setStatic(generatedMethod.isStatic())
 				.setReturnType(generatedMethod.returnType()).setName(generatedMethod.getName())
-				.setBody(generatedMethod.getBody());
+				.setBody(generatedMethod.body());
 
 		addParameterOnMethod(generatedMethod, methodSource);
 	}

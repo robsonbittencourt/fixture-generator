@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.clazz.part.GeneratedMethod;
-import com.utility.generator.fixture.FixtureBuildListMethod;
 
 public class FixtureBuildListMethodTest {
 
@@ -37,13 +36,13 @@ public class FixtureBuildListMethodTest {
 
 	@Test
 	public void shouldReturnTheBodyOfTheMethod() {
-		String body = "List<Person> persons = new ArrayList<>();";
-		body += "for (int i = 0; i < amount; i++) {";
-		body += "persons.add(this.build());";
-		body += "}";
+		String body = "List<Person> persons = new ArrayList<>();\n";
+		body += "for (int i = 0; i < amount; i++) {\n";
+		body += "	persons.add(this.build());\n";
+		body += "}\n";
 		body += "return persons;";
 
-		assertEquals(body, method.getBody());
+		assertEquals(body, method.body());
 	}
 
 	@Test

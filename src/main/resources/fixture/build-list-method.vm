@@ -1,0 +1,5 @@
+List<${className}> ${fieldName}s = new ArrayList<>();
+for (int i = 0; i < amount; i++) {
+	${fieldName}s.add(this.build());
+}
+return ${fieldName}s;

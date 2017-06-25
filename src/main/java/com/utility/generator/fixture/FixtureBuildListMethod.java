@@ -4,14 +4,16 @@ import static com.utility.generator.util.Utils.lowerFirstLetter;
 import static org.jboss.forge.roaster.model.Visibility.PUBLIC;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jboss.forge.roaster.model.Visibility;
 
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedParameter;
 
-public class FixtureBuildListMethod implements GeneratedMethod {
+public class FixtureBuildListMethod extends GeneratedMethod {
 	
 	private String className;
 
@@ -35,16 +37,18 @@ public class FixtureBuildListMethod implements GeneratedMethod {
 	}
 
 	@Override
-	public String getBody() {
-		String fieldName = lowerFirstLetter(className);
-		
-		String body = "List<" + className + "> " + fieldName + "s = new ArrayList<>();";
-		body += "for (int i = 0; i < amount; i++) {";
-		body += fieldName + "s.add(this.build());";
-		body += "}";
-		body += "return " + fieldName + "s;";
-		
-		return body;
+	public String getBodyTemplate() {
+		return "fixture/build-list-method.vm";
+	}
+
+	@Override
+	public Map<String, Object> getBodyTemplateVariables() {
+		Map<String, Object> variables = new HashMap<>();
+
+		variables.put("className", className);
+		variables.put("fieldName", lowerFirstLetter(className));
+
+		return variables;
 	}
 
 	@Override
