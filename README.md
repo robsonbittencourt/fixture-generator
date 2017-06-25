@@ -1,5 +1,5 @@
-# fixture-generator [![Build Status](https://travis-ci.org/robsonbittencourt/fixture-generator.svg?branch=master)](https://travis-ci.org/robsonbittencourt/fixture-generator)
-Generate fixtures class to use in your tests
+# utility-generator [![Build Status](https://travis-ci.org/robsonbittencourt/utility-generator.svg?branch=master)](https://travis-ci.org/robsonbittencourt/fixture-generator)
+Generate utility class to use in your project
 
 ## Generate Jar File
 
