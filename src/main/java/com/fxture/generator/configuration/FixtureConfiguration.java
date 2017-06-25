@@ -48,6 +48,10 @@ public class FixtureConfiguration {
 	}
 
 	public String getClassNameSuffix() {
+		if (StringUtils.isBlank(classNameSuffix)) {
+			return "Fixture";
+		}
+		
 		return classNameSuffix;
 	}
 

@@ -10,7 +10,6 @@ import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
 import com.fixture.generator.file.FileBuilder;
-import com.fixture.generator.validator.FixtureCandidateValidator;
 import com.fxture.generator.configuration.FixtureConfiguration;
 
 public class ClassGenerator {
@@ -23,19 +22,6 @@ public class ClassGenerator {
 
 	public ClassGenerator(FixtureConfiguration configuration) {
 		this.configuration = configuration;
-	}
-
-	public void generateFixture(Class<?> originClass) {
-		FixtureCandidateValidator validator = new FixtureCandidateValidator();
-		validator.validate(originClass);
-
-		final JavaClassSource classSource = Roaster.create(JavaClassSource.class);
-
-		List<ClassInformationBuilder> classBuilders = ClassInformationBuildersFactory.getForFixture();
-
-		classBuilders.stream().forEach(b -> b.build(originClass, classSource, configuration));
-
-		saveToFile(originClass, classSource);
 	}
 
 	public void generateMapperTest(Class<?> originClass) {

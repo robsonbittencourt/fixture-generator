@@ -1,0 +1,66 @@
+package com.fixture.generator.fixture;
+
+import static org.junit.Assert.assertEquals;
+
+import java.lang.reflect.Field;
+
+import org.jboss.forge.roaster.model.Visibility;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.fixture.generator.base.clazz.Person;
+import com.fixture.generator.clazz.part.GeneratedMethod;
+import com.fxture.generator.configuration.FixtureConfiguration;
+
+public class FixtureWithMethodTest {
+
+	private GeneratedMethod method;
+
+	@Before
+	public void setUp() {
+		Class<Person> originClass = Person.class;
+		FixtureConfiguration configuration = new FixtureConfiguration();
+		Field nameField = originClass.getDeclaredFields()[0];
+
+		method = new FixtureWithMethod(originClass, configuration, nameField);
+	}
+
+	@Test
+	public void shouldBeAPublicMethod() {
+		assertEquals(Visibility.PUBLIC, method.visibility());
+	}
+
+	@Test
+	public void shouldReturnOriginClassWithFixtureSuffix() {
+		assertEquals("PersonFixture", method.returnType());
+	}
+
+	@Test
+	public void methodNameShoudlBeMethodPrefixWithFieldName() {
+		assertEquals("withName", method.getName());
+	}
+
+	@Test
+	public void shouldReturnTheBodyOfTheMethod() {
+		String body = "this.person.setName(name);";
+		body += "return this;";
+
+		assertEquals(body, method.getBody());
+	}
+
+	@Test
+	public void shouldReturnOneParameter() {
+		assertEquals(1, method.getParameters().size());
+	}
+
+	@Test
+	public void shouldReturnAParameterWithTheSameTypeOfField() {
+		assertEquals(String.class, method.getParameters().get(0).getType());
+	}
+
+	@Test
+	public void shouldReturnAParameterWithTheSameNameOfField() {
+		assertEquals("name", method.getParameters().get(0).getName());
+	}
+
+}
