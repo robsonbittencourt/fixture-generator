@@ -20,6 +20,10 @@ public abstract class GeneratedMethod {
 
 	public abstract Map<String, Object> getBodyTemplateVariables();
 
+	public List<GeneratedAnnotation> annotations() {
+		return Collections.emptyList();
+	}
+
 	public boolean isStatic() {
 		return false;
 	}

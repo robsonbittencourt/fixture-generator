@@ -24,6 +24,16 @@ public class ClassGenerator {
 		this.configuration = configuration;
 	}
 
+	public String toString(Class<?> originClass) {
+		final JavaClassSource classSource = Roaster.create(JavaClassSource.class);
+
+		List<ClassInformationBuilder> classBuilders = ClassInformationBuildersFactory.getForMapperTest();
+
+		classBuilders.stream().forEach(b -> b.build(originClass, classSource, configuration));
+
+		return classSource.toString();
+	}
+
 	public void generateMapperTest(Class<?> originClass) {
 		final JavaClassSource classSource = Roaster.create(JavaClassSource.class);
 

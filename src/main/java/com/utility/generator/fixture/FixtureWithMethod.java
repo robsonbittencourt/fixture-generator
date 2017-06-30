@@ -49,6 +49,15 @@ public class FixtureWithMethod extends GeneratedMethod {
 	}
 
 	@Override
+	public List<GeneratedParameter> getParameters() {
+		List<GeneratedParameter> parameters = new ArrayList<>();
+
+		parameters.add(new GeneratedParameter(field.getType(), field.getName()));
+
+		return parameters;
+	}
+
+	@Override
 	public Map<String, Object> getBodyTemplateVariables() {
 		Map<String, Object> variables = new HashMap<>();
 
@@ -57,15 +66,6 @@ public class FixtureWithMethod extends GeneratedMethod {
 		variables.put("classField", lowerFirstLetter(originClass.getSimpleName()));
 
 		return variables;
-	}
-
-	@Override
-	public List<GeneratedParameter> getParameters() {
-		List<GeneratedParameter> parameters = new ArrayList<>();
-
-		parameters.add(new GeneratedParameter(field.getType(), field.getName()));
-
-		return parameters;
 	}
 
 }

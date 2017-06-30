@@ -59,7 +59,14 @@ public class JavaClassSourceWrapper {
 				.setReturnType(generatedMethod.returnType()).setName(generatedMethod.getName())
 				.setBody(generatedMethod.body());
 
+		addAnnotations(generatedMethod, methodSource);
 		addParameterOnMethod(generatedMethod, methodSource);
+	}
+
+	private void addAnnotations(GeneratedMethod generatedMethod, MethodSource<JavaClassSource> methodSource) {
+		for (GeneratedAnnotation annotation : generatedMethod.annotations()) {
+			methodSource.addAnnotation(annotation.name());
+		}
 	}
 
 	private void addParameterOnMethod(GeneratedMethod generatedMethod, MethodSource<JavaClassSource> methodSource) {
