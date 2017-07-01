@@ -1,4 +1,4 @@
-package com.utility.generator.mappertest;
+package com.utility.generator.mappertester;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,6 +10,7 @@ import com.utility.generator.base.clazz.ServicePerson;
 import com.utility.generator.base.clazz.SimpleMapper;
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
 import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.mappertester.MapperTester;
 
 public class MapperTestTest {
 
@@ -23,7 +24,7 @@ public class MapperTestTest {
 		configuration.setTypeClass(ServicePerson.class);
 		configuration.setMethodName("shouldTestAllParams");
 
-		generatedClass = new MapperTest(SimpleMapper.class, configuration);
+		generatedClass = new MapperTester(SimpleMapper.class, configuration);
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package com.utility.generator.mappertest;
+package com.utility.generator.mappertester;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
@@ -6,12 +6,12 @@ import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.FixtureConfiguration;
 
 
-public class MapperTestPackage implements GeneratedPackage {
+public class MapperTesterPackage implements GeneratedPackage {
 
 	private Class<?> originClass;
 	private FixtureConfiguration configuration;
 
-	protected MapperTestPackage(Class<?> originClass, FixtureConfiguration configuration) {
+	protected MapperTesterPackage(Class<?> originClass, FixtureConfiguration configuration) {
 		this.originClass = originClass;
 		this.configuration = configuration;
 	}

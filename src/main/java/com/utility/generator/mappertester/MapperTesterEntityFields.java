@@ -1,12 +1,12 @@
-package com.utility.generator.mappertest;
+package com.utility.generator.mappertester;
 
 
-public class MapperTestEntityFields {
+public class MapperTesterEntityFields {
 
 	private String name;
 	private String type;
 
-	public MapperTestEntityFields(String name, String type) {
+	public MapperTesterEntityFields(String name, String type) {
 		this.name = name;
 		this.type = type;
 	}

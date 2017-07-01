@@ -1,4 +1,4 @@
-package com.utility.generator.mappertest;
+package com.utility.generator.mappertester;
 
 import static com.utility.generator.util.Utils.getPathFromPackageName;
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -14,24 +14,24 @@ import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.FixtureConfiguration;
 
-public class MapperTest extends AbstractGeneratedClass {
+public class MapperTester extends AbstractGeneratedClass {
 
 	private Class<?> originClass;
 	private FixtureConfiguration configuration;
 
-	public MapperTest(Class<?> originClass, FixtureConfiguration configuration) {
+	public MapperTester(Class<?> originClass, FixtureConfiguration configuration) {
 		this.originClass = originClass;
 		this.configuration = configuration;
 	}
 
 	@Override
 	public GeneratedPackage packagge() {
-		return new MapperTestPackage(originClass, configuration);
+		return new MapperTesterPackage(originClass, configuration);
 	}
 
 	@Override
 	public GeneratedImports imports() {
-		return new MapperTestImports(originClass);
+		return new MapperTesterImports(originClass);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class MapperTest extends AbstractGeneratedClass {
 	public List<GeneratedMethod> methods() {
 		List<GeneratedMethod> methods = new ArrayList<>();
 
-		methods.add(new MapperTestShouldTestAllParamsMethod(configuration));
+		methods.add(new MapperTesterShouldTestAllParamsMethod(configuration));
 
 		return methods;
 	}

@@ -1,4 +1,4 @@
-package com.utility.generator.mappertest;
+package com.utility.generator.mappertester;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +8,11 @@ import org.junit.Test;
 import com.utility.generator.clazz.part.GeneratedImports;
 
 
-public class MapperTestImports implements GeneratedImports {
+public class MapperTesterImports implements GeneratedImports {
 
 	private Class<?> originClass;
 
-	public MapperTestImports(Class<?> originClass) {
+	public MapperTesterImports(Class<?> originClass) {
 		this.originClass = originClass;
 	}
 

@@ -1,4 +1,4 @@
-package com.utility.generator.mappertest;
+package com.utility.generator.mappertester;
 
 import static org.jboss.forge.roaster.model.Visibility.PUBLIC;
 
@@ -16,11 +16,11 @@ import com.utility.generator.commons.annotation.TestAnnotation;
 import com.utility.generator.configuration.FixtureConfiguration;
 
 
-public class MapperTestShouldTestAllParamsMethod extends GeneratedMethod {
+public class MapperTesterShouldTestAllParamsMethod extends GeneratedMethod {
 
 	private FixtureConfiguration configuration;
 
-	public MapperTestShouldTestAllParamsMethod(FixtureConfiguration configuration) {
+	public MapperTesterShouldTestAllParamsMethod(FixtureConfiguration configuration) {
 		this.configuration = configuration;
 	}
 
@@ -50,7 +50,7 @@ public class MapperTestShouldTestAllParamsMethod extends GeneratedMethod {
 
 	@Override
 	public String getBodyTemplate() {
-		return "mappertest/should-test-all-params-method.vm";
+		return "mappertester/should-test-all-params-method.vm";
 	}
 
 	@Override
@@ -64,8 +64,8 @@ public class MapperTestShouldTestAllParamsMethod extends GeneratedMethod {
 		return variables;
 	}
 
-	private List<MapperTestEntityFields> buildFields() {
-		List<MapperTestEntityFields> fields = new ArrayList<>();
+	private List<MapperTesterEntityFields> buildFields() {
+		List<MapperTesterEntityFields> fields = new ArrayList<>();
 		
 		for (Method entityMethod : configuration.getEntityClass().getDeclaredMethods()) {
 			String name = entityMethod.getName();
@@ -73,7 +73,7 @@ public class MapperTestShouldTestAllParamsMethod extends GeneratedMethod {
 			if (name.startsWith("set")) {
 				String fieldName = name.replace("set", "");
 				String fieldType = entityMethod.getParameters()[0].getType().getSimpleName();
-				fields.add(new MapperTestEntityFields(fieldName, fieldType));
+				fields.add(new MapperTesterEntityFields(fieldName, fieldType));
 			}
 		}
 		
