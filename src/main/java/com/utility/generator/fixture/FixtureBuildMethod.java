@@ -10,7 +10,7 @@ import org.jboss.forge.roaster.model.Visibility;
 
 import com.utility.generator.clazz.part.GeneratedMethod;
 
-public class FixtureBuildMethod extends GeneratedMethod {
+public class FixtureBuildMethod implements GeneratedMethod {
 
 	private String className;
 

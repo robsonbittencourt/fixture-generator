@@ -16,7 +16,7 @@ import com.utility.generator.commons.annotation.TestAnnotation;
 import com.utility.generator.configuration.FixtureConfiguration;
 
 
-public class MapperTesterShouldTestAllParamsMethod extends GeneratedMethod {
+public class MapperTesterShouldTestAllParamsMethod implements GeneratedMethod {
 
 	private FixtureConfiguration configuration;
 

@@ -8,31 +8,31 @@ import org.jboss.forge.roaster.model.Visibility;
 
 import com.utility.generator.template.VelocityTemplateEngine;
 
-public abstract class GeneratedMethod {
+public interface GeneratedMethod {
 
-	public abstract Visibility visibility();
+	Visibility visibility();
 
-	public abstract String returnType();
+	String returnType();
 
-	public abstract String getName();
+	String getName();
 
-	public abstract String getBodyTemplate();
+	String getBodyTemplate();
 
-	public abstract Map<String, Object> getBodyTemplateVariables();
+	Map<String, Object> getBodyTemplateVariables();
 
-	public List<GeneratedAnnotation> annotations() {
+	default List<GeneratedAnnotation> annotations() {
 		return Collections.emptyList();
 	}
 
-	public boolean isStatic() {
+	default boolean isStatic() {
 		return false;
 	}
 
-	public List<GeneratedParameter> getParameters() {
+	default List<GeneratedParameter> getParameters() {
 		return Collections.emptyList();
 	}
 
-	public String body() {
+	default String body() {
 		VelocityTemplateEngine velocityEngine = new VelocityTemplateEngine();
 
 		return velocityEngine.fillTemplate(getBodyTemplate(), getBodyTemplateVariables());

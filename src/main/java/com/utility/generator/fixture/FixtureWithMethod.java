@@ -16,7 +16,7 @@ import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedParameter;
 import com.utility.generator.configuration.FixtureConfiguration;
 
-public class FixtureWithMethod extends GeneratedMethod {
+public class FixtureWithMethod implements GeneratedMethod {
 
 	private Class<?> originClass;
 	private FixtureConfiguration configuration;
