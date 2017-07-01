@@ -1,21 +1,21 @@
-package com.utility.generator.fixture;
+package com.utility.generator.mappertester;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.utility.generator.base.clazz.Person;
+import com.utility.generator.base.clazz.SimpleMapper;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.FixtureConfiguration;
 
-public class FixturePackageTest {
+public class MapperTesterPackageTest {
 
 	@Test
 	public void shouldReturnPackageNameOfOriginClassWhenNotHavePackageNameInConfiguration() {
 		FixtureConfiguration configuration = new FixtureConfiguration();
 		configuration.setPackageName(null);
 
-		GeneratedPackage fixturePackage = new FixturePackage(Person.class, configuration);
+		GeneratedPackage fixturePackage = new MapperTesterPackage(SimpleMapper.class, configuration);
 
 		assertEquals("com.utility.generator.base.clazz", fixturePackage.name());
 	}
@@ -25,7 +25,7 @@ public class FixturePackageTest {
 		FixtureConfiguration configuration = new FixtureConfiguration();
 		configuration.setPackageName("com.utility");
 
-		GeneratedPackage fixturePackage = new FixturePackage(Person.class, configuration);
+		GeneratedPackage fixturePackage = new MapperTesterPackage(SimpleMapper.class, configuration);
 
 		assertEquals("com.utility", fixturePackage.name());
 	}

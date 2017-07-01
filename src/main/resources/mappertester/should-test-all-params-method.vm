@@ -6,5 +6,5 @@ ${entity} entity = new ${entity}();
 
 ${type} type = mapper.toType(entity);
 #foreach( $field in $fields )
-	assertEquals(entity.get${field.name}(), type.get${field.name}());
+    assertEquals(entity.get${field.name}(), type.get${field.name}());
 #end

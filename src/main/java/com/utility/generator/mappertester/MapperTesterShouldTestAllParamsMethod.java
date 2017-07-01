@@ -68,16 +68,20 @@ public class MapperTesterShouldTestAllParamsMethod extends GeneratedMethod {
 		List<MapperTesterEntityFields> fields = new ArrayList<>();
 		
 		for (Method entityMethod : configuration.getEntityClass().getDeclaredMethods()) {
-			String name = entityMethod.getName();
-			
-			if (name.startsWith("set")) {
-				String fieldName = name.replace("set", "");
-				String fieldType = entityMethod.getParameters()[0].getType().getSimpleName();
-				fields.add(new MapperTesterEntityFields(fieldName, fieldType));
-			}
+			addSettersAsFields(fields, entityMethod);
 		}
 		
 		return fields;
+	}
+
+	private void addSettersAsFields(List<MapperTesterEntityFields> fields, Method entityMethod) {
+		String name = entityMethod.getName();
+		
+		if (name.startsWith("set")) {
+			String fieldName = name.replace("set", "");
+			String fieldType = entityMethod.getParameters()[0].getType().getSimpleName();
+			fields.add(new MapperTesterEntityFields(fieldName, fieldType));
+		}
 	}
 
 }

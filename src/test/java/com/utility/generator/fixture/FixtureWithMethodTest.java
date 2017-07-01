@@ -36,7 +36,7 @@ public class FixtureWithMethodTest {
 	}
 
 	@Test
-	public void methodNameShoudlBeMethodPrefixWithFieldName() {
+	public void methodNameShouldBeMethodPrefixWithFieldName() {
 		assertEquals("withName", method.getName());
 	}
 

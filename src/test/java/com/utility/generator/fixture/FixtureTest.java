@@ -40,7 +40,7 @@ public class FixtureTest {
 	}
 
 	@Test
-	public void classNameShouldBeTheNameOfOriginClassWithCOnfiguredSuffix() {
+	public void classNameShouldBeTheNameOfOriginClassWithConfiguredSuffix() {
 		assertEquals("PersonFixture", generatedClass.name());
 	}
 
