@@ -57,9 +57,9 @@ public class MapperTestShouldTestAllParamsMethod extends GeneratedMethod {
 	public Map<String, Object> getBodyTemplateVariables() {
 		Map<String, Object> variables = new HashMap<>();
 
-		variables.put("entity", configuration.getEntityClass().getSimpleName());
 		variables.put("fields", buildFields());
 		variables.put("type", configuration.getTypeClass().getSimpleName());
+		variables.put("entity", configuration.getEntityClass().getSimpleName());
 
 		return variables;
 	}
