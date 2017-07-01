@@ -10,7 +10,7 @@ import com.utility.generator.exception.FixtureGeneratorException;
 public class FileBuilder {
 
 	public void createFile(String className, String path, String content) {
-		File file = new File(path + "/" + className + ".java");
+		File file = new File(path + File.separator + className + ".java");
 		file.getParentFile().mkdirs();
 		
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()))){
