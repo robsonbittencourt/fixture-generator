@@ -37,9 +37,11 @@ public class VelocityTemplateEngine implements TemplateEngine {
 
 	private VelocityContext createContext(Map<String, Object> properties) {
 		VelocityContext context = new VelocityContext();
-		for (String key : properties.keySet()) {
-			context.put(key, properties.get(key));
+
+		for (Map.Entry<String, Object> entry : properties.entrySet()) {
+			context.put(entry.getKey(), entry.getValue());
 		}
+
 		return context;
 	}
 
