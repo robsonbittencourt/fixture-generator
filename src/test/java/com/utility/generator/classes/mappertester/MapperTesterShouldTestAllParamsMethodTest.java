@@ -11,7 +11,7 @@ import com.utility.generator.base.clazz.Person;
 import com.utility.generator.base.clazz.ServicePerson;
 import com.utility.generator.classes.mappertester.MapperTesterShouldTestAllParamsMethod;
 import com.utility.generator.clazz.part.GeneratedMethod;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 public class MapperTesterShouldTestAllParamsMethodTest {
 
@@ -19,7 +19,7 @@ public class MapperTesterShouldTestAllParamsMethodTest {
 
 	@Before
 	public void setUp() {
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setClassNameSuffix("Test");
 		configuration.setEntityClass(Person.class);
 		configuration.setTypeClass(ServicePerson.class);

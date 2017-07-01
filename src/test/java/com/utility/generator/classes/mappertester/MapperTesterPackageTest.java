@@ -7,13 +7,13 @@ import org.junit.Test;
 import com.utility.generator.base.clazz.SimpleMapper;
 import com.utility.generator.classes.mappertester.MapperTesterPackage;
 import com.utility.generator.clazz.part.GeneratedPackage;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 public class MapperTesterPackageTest {
 
 	@Test
 	public void shouldReturnPackageNameOfOriginClassWhenNotHavePackageNameInConfiguration() {
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setPackageName(null);
 
 		GeneratedPackage fixturePackage = new MapperTesterPackage(SimpleMapper.class, configuration);
@@ -23,7 +23,7 @@ public class MapperTesterPackageTest {
 
 	@Test
 	public void shouldReturnConfiguredPackageNameWhenHavePackageNameInConfiguration() {
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setPackageName("com.utility");
 
 		GeneratedPackage fixturePackage = new MapperTesterPackage(SimpleMapper.class, configuration);

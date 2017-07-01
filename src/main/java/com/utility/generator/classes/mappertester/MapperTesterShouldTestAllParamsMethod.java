@@ -13,14 +13,14 @@ import org.jboss.forge.roaster.model.Visibility;
 import com.utility.generator.annotation.TestAnnotation;
 import com.utility.generator.clazz.part.GeneratedAnnotation;
 import com.utility.generator.clazz.part.GeneratedMethod;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 
 public class MapperTesterShouldTestAllParamsMethod implements GeneratedMethod {
 
-	private FixtureConfiguration configuration;
+	private Configuration configuration;
 
-	public MapperTesterShouldTestAllParamsMethod(FixtureConfiguration configuration) {
+	public MapperTesterShouldTestAllParamsMethod(Configuration configuration) {
 		this.configuration = configuration;
 	}
 

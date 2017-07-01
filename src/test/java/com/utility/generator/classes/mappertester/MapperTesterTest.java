@@ -20,7 +20,7 @@ import com.utility.generator.clazz.part.GeneratedField;
 import com.utility.generator.clazz.part.GeneratedImports;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 public class MapperTesterTest {
 
@@ -28,7 +28,7 @@ public class MapperTesterTest {
 
 	@Before
 	public void setUp() {
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setClassNameSuffix("Test");
 		configuration.setEntityClass(Person.class);
 		configuration.setTypeClass(ServicePerson.class);
@@ -82,7 +82,7 @@ public class MapperTesterTest {
 
 	@Test
 	public void shouldReturnThePathWithOriginClassPackageNameWhenDoNotHavePackageNameInConfiguration() {
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setClassNameSuffix("Test");
 		configuration.setEntityClass(Person.class);
 		configuration.setTypeClass(ServicePerson.class);
@@ -95,7 +95,7 @@ public class MapperTesterTest {
 
 	@Test
 	public void shouldReturnThePathWithConfiguredPackageNameWhenHavePackageNameInConfiguration() {
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setClassNameSuffix("Test");
 		configuration.setEntityClass(Person.class);
 		configuration.setTypeClass(ServicePerson.class);

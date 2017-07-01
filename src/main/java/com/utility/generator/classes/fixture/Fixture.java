@@ -13,14 +13,14 @@ import com.utility.generator.clazz.part.GeneratedField;
 import com.utility.generator.clazz.part.GeneratedImports;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 public class Fixture extends AbstractGeneratedClass {
 
 	private Class<?> originClass;
-	private FixtureConfiguration configuration;
+	private Configuration configuration;
 	
-	public Fixture(Class<?> originClass, FixtureConfiguration configuration) {
+	public Fixture(Class<?> originClass, Configuration configuration) {
 		this.originClass = originClass;
 		this.configuration = configuration;
 	}

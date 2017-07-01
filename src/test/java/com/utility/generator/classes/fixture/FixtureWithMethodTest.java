@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.classes.fixture.FixtureWithMethod;
 import com.utility.generator.clazz.part.GeneratedMethod;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 public class FixtureWithMethodTest {
 
@@ -20,7 +20,7 @@ public class FixtureWithMethodTest {
 	@Before
 	public void setUp() {
 		Class<Person> originClass = Person.class;
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		Field nameField = originClass.getDeclaredFields()[0];
 
 		method = new FixtureWithMethod(originClass, configuration, nameField);

@@ -2,7 +2,7 @@ package com.utility.generator.configuration;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class FixtureConfiguration {
+public class Configuration {
 
 	private static final String DEFAULT_METHOD_PREFIX = "with";
 	private static final String DEFAULT_ROOT_PATH = "src/test/java/";

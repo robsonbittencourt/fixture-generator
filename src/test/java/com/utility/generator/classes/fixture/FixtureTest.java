@@ -22,7 +22,7 @@ import com.utility.generator.clazz.part.GeneratedField;
 import com.utility.generator.clazz.part.GeneratedImports;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 public class FixtureTest {
 
@@ -30,7 +30,7 @@ public class FixtureTest {
 
 	@Before
 	public void setUp() {
-		generatedClass = new Fixture(Person.class, new FixtureConfiguration());
+		generatedClass = new Fixture(Person.class, new Configuration());
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class FixtureTest {
 
 	@Test
 	public void shouldReturnThePathWithConfiguredPackageNameWhenHavePackageNameInConfiguration() {
-		FixtureConfiguration configuration = new FixtureConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setPackageName("com.generator");
 
 		generatedClass = new Fixture(Person.class, configuration);

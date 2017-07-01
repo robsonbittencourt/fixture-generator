@@ -14,15 +14,15 @@ import org.jboss.forge.roaster.model.Visibility;
 
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedParameter;
-import com.utility.generator.configuration.FixtureConfiguration;
+import com.utility.generator.configuration.Configuration;
 
 public class FixtureWithMethod implements GeneratedMethod {
 
 	private Class<?> originClass;
-	private FixtureConfiguration configuration;
+	private Configuration configuration;
 	private Field field;
 
-	protected FixtureWithMethod(Class<?> originClass, FixtureConfiguration configuration, Field field) {
+	protected FixtureWithMethod(Class<?> originClass, Configuration configuration, Field field) {
 		this.originClass = originClass;
 		this.configuration = configuration;
 		this.field = field;
