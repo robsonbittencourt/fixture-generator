@@ -29,7 +29,7 @@ public class FixtureCandidateValidator {
 		}
 	}
 
-	private void hasPropertyWithSetMethod(Class<?> clazz) throws FixtureGeneratorException {
+	private void hasPropertyWithSetMethod(Class<?> clazz) {
 		boolean hasPropertyWithSetMethod = Arrays.stream(clazz.getDeclaredFields())
 				.anyMatch(f -> hasSetMethod(clazz, f));
 
