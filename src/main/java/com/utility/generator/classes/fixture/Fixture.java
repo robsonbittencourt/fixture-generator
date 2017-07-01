@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
 import com.utility.generator.clazz.part.GeneratedField;
-import com.utility.generator.clazz.part.GeneratedImports;
+import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.Configuration;
@@ -31,8 +31,14 @@ public class Fixture extends AbstractGeneratedClass {
 	}
 
 	@Override
-	public GeneratedImports imports() {
-		return new FixtureImports(originClass);
+	public List<GeneratedImport> imports() {
+		List<GeneratedImport> imports = new ArrayList<>();
+
+		imports.add(new GeneratedImport(List.class));
+		imports.add(new GeneratedImport(ArrayList.class));
+		imports.add(new GeneratedImport(originClass));
+
+		return imports;
 	}
 
 	@Override

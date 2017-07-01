@@ -9,17 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
-import com.utility.generator.classes.fixture.Fixture;
-import com.utility.generator.classes.fixture.FixtureBaseField;
-import com.utility.generator.classes.fixture.FixtureBuildListMethod;
-import com.utility.generator.classes.fixture.FixtureBuildMethod;
-import com.utility.generator.classes.fixture.FixtureGetMethod;
-import com.utility.generator.classes.fixture.FixtureImports;
-import com.utility.generator.classes.fixture.FixturePackage;
-import com.utility.generator.classes.fixture.FixtureWithMethod;
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
 import com.utility.generator.clazz.part.GeneratedField;
-import com.utility.generator.clazz.part.GeneratedImports;
+import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.Configuration;
@@ -41,10 +33,13 @@ public class FixtureTest {
 	}
 
 	@Test
-	public void shouldReturnFixtureImportsAsImports() {
-		GeneratedImports generatedImports = generatedClass.imports();
+	public void shouldReturnTheCorrectImports() {
+		List<GeneratedImport> generatedImports = generatedClass.imports();
 
-		assertTrue(generatedImports instanceof FixtureImports);
+		assertEquals(3, generatedImports.size());
+		assertEquals("java.util.List", generatedImports.get(0).qualifiedName());
+		assertEquals("java.util.ArrayList", generatedImports.get(1).qualifiedName());
+		assertEquals("com.utility.generator.base.clazz.Person", generatedImports.get(2).qualifiedName());
 	}
 
 	@Test

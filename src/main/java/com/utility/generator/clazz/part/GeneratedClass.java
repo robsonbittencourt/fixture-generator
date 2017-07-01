@@ -6,7 +6,7 @@ public interface GeneratedClass {
 	
 	GeneratedPackage packagge();
 	
-	GeneratedImports imports();
+	List<GeneratedImport> imports();
 
 	String name();
 	

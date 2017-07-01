@@ -1,4 +1,4 @@
-package com.utility.generator.annotation;
+package com.utility.generator.commons.annotation;
 
 import org.junit.Test;
 

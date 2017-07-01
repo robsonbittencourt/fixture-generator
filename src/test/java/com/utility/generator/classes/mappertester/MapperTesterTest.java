@@ -11,13 +11,9 @@ import org.junit.Test;
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.base.clazz.ServicePerson;
 import com.utility.generator.base.clazz.SimpleMapper;
-import com.utility.generator.classes.mappertester.MapperTester;
-import com.utility.generator.classes.mappertester.MapperTesterImports;
-import com.utility.generator.classes.mappertester.MapperTesterPackage;
-import com.utility.generator.classes.mappertester.MapperTesterShouldTestAllParamsMethod;
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
 import com.utility.generator.clazz.part.GeneratedField;
-import com.utility.generator.clazz.part.GeneratedImports;
+import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.Configuration;
@@ -45,10 +41,14 @@ public class MapperTesterTest {
 	}
 
 	@Test
-	public void shouldReturnMapperTesterImportsAsImports() {
-		GeneratedImports generatedImports = generatedClass.imports();
+	public void shouldReturnTheCorrectImports() {
+		List<GeneratedImport> generatedImports = generatedClass.imports();
 
-		assertTrue(generatedImports instanceof MapperTesterImports);
+		assertEquals(4, generatedImports.size());
+		assertEquals("com.utility.generator.base.clazz.SimpleMapper", generatedImports.get(0).qualifiedName());
+		assertEquals("java.util.List", generatedImports.get(1).qualifiedName());
+		assertEquals("java.util.ArrayList", generatedImports.get(2).qualifiedName());
+		assertEquals("org.junit.Test", generatedImports.get(3).qualifiedName());
 	}
 
 	@Test

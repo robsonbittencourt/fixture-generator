@@ -29,10 +29,8 @@ public class JavaClassSourceWrapper {
 	}
 
 	private void setImports(GeneratedClass generatedClass) {
-		for (Class<?> generatedImport : generatedClass.imports().classesToImport()) {
-			String qualifiedName = generatedImport.getPackage().getName() + "." + generatedImport.getSimpleName();
-
-			classSource.addImport(qualifiedName);
+		for (GeneratedImport generatedImport : generatedClass.imports()) {
+			classSource.addImport(generatedImport.qualifiedName());
 		}
 	}
 

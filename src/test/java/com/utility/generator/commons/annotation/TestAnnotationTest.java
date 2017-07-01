@@ -1,4 +1,4 @@
-package com.utility.generator.annotation;
+package com.utility.generator.commons.annotation;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,7 +6,7 @@ import java.lang.annotation.Annotation;
 
 import org.junit.Test;
 
-import com.utility.generator.annotation.TestAnnotation;
+import com.utility.generator.commons.annotation.TestAnnotation;
 
 public class TestAnnotationTest {
 

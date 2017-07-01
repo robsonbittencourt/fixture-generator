@@ -10,9 +10,9 @@ import java.util.Map;
 
 import org.jboss.forge.roaster.model.Visibility;
 
-import com.utility.generator.annotation.TestAnnotation;
 import com.utility.generator.clazz.part.GeneratedAnnotation;
 import com.utility.generator.clazz.part.GeneratedMethod;
+import com.utility.generator.commons.annotation.TestAnnotation;
 import com.utility.generator.configuration.Configuration;
 
 

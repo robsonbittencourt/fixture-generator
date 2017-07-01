@@ -3,11 +3,13 @@ package com.utility.generator.classes.randomstuff;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
-import com.utility.generator.clazz.part.GeneratedImports;
+import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedPackage;
 
 public class RandomStuffTest {
@@ -27,10 +29,12 @@ public class RandomStuffTest {
 	}
 
 	@Test
-	public void shouldReturnRandomStuffImportsAsImports() {
-		GeneratedImports generatedImports = generatedClass.imports();
+	public void shouldReturnTheCorrectImports() {
+		List<GeneratedImport> generatedImports = generatedClass.imports();
 
-		assertTrue(generatedImports instanceof RandomStuffImports);
+		assertEquals(2, generatedImports.size());
+		assertEquals("java.util.Random", generatedImports.get(0).qualifiedName());
+		assertEquals("org.apache.commons.lang.math.RandomUtils", generatedImports.get(1).qualifiedName());
 	}
 
 	@Test
