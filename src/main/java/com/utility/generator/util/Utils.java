@@ -4,6 +4,10 @@ import java.lang.reflect.Field;
 
 public class Utils {
 
+	private Utils() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static String upperFirstLetter(String string) {
 		return Character.toUpperCase(string.charAt(0)) + string.substring(1);
 	}
