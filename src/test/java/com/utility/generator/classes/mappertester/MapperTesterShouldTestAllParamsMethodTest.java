@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.base.clazz.ServicePerson;
-import com.utility.generator.classes.mappertester.MapperTesterShouldTestAllParamsMethod;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.configuration.Configuration;
 

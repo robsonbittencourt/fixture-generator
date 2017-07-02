@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
-import com.utility.generator.classes.fixture.FixtureBuildListMethod;
 import com.utility.generator.clazz.part.GeneratedMethod;
 
 public class FixtureBuildListMethodTest {

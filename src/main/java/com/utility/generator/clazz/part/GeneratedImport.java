@@ -2,20 +2,25 @@ package com.utility.generator.clazz.part;
 
 public class GeneratedImport {
 
-	private Class<?> clazz;
+	private String qualifiedName;
 	private boolean staticImport = false;
 
 	public GeneratedImport(Class<?> clazz) {
-		this.clazz = clazz;
+		this.qualifiedName = clazz.getPackage().getName() + "." + clazz.getSimpleName();
 	}
 
 	public GeneratedImport(Class<?> clazz, boolean staticImport) {
-		this.clazz = clazz;
+		this.qualifiedName = clazz.getPackage().getName() + "." + clazz.getSimpleName();
+		this.staticImport = staticImport;
+	}
+
+	public GeneratedImport(String qualifiedName, boolean staticImport) {
+		this.qualifiedName = qualifiedName;
 		this.staticImport = staticImport;
 	}
 
 	public String qualifiedName() {
-		return clazz.getPackage().getName() + "." + clazz.getSimpleName();
+		return qualifiedName;
 	}
 
 	public boolean isStatic() {

@@ -1,4 +1,4 @@
-package com.utility.generator.classes.randomstuff;
+package com.utility.generator.classes.randomstuff.method;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -7,6 +7,7 @@ import org.jboss.forge.roaster.model.Visibility;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.utility.generator.classes.randomstuff.method.RandomStuffStringMethod;
 import com.utility.generator.clazz.part.GeneratedMethod;
 
 public class RandomStuffStringMethodTest {

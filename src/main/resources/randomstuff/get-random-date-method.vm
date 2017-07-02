@@ -1,0 +1,2 @@
+LocalDate localDate = LocalDate.now().minus(Period.ofDays((new Random().nextInt(365 * 70))));
+return new Date(localDate.atStartOfDay(ZoneId.of("America/New_York")).toEpochSecond() * 1000);

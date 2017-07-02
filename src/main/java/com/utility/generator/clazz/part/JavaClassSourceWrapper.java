@@ -30,7 +30,13 @@ public class JavaClassSourceWrapper {
 
 	private void setImports(GeneratedClass generatedClass) {
 		for (GeneratedImport generatedImport : generatedClass.imports()) {
-			classSource.addImport(generatedImport.qualifiedName());
+			classSource.addImport(generatedImport.qualifiedName()).setStatic(generatedImport.isStatic());
+		}
+
+		for (GeneratedMethod generatedMethod : generatedClass.methods()) {
+			for (GeneratedImport generatedImport : generatedMethod.imports()) {
+				classSource.addImport(generatedImport.qualifiedName()).setStatic(generatedImport.isStatic());
+			}
 		}
 	}
 

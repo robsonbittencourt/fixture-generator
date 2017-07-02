@@ -20,6 +20,10 @@ public interface GeneratedMethod {
 
 	Map<String, Object> getBodyTemplateVariables();
 
+	default List<GeneratedImport> imports() {
+		return Collections.emptyList();
+	}
+
 	default List<GeneratedAnnotation> annotations() {
 		return Collections.emptyList();
 	}

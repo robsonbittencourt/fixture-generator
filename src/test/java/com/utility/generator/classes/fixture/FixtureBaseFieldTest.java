@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
-import com.utility.generator.classes.fixture.FixtureBaseField;
 import com.utility.generator.clazz.part.GeneratedField;
 
 public class FixtureBaseFieldTest {

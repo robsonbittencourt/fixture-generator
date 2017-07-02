@@ -1,5 +1,7 @@
-package com.utility.generator.classes.randomstuff;
+package com.utility.generator.classes.randomstuff.method;
 
+import static com.utility.generator.util.Utils.lowerFirstLetter;
+import static com.utility.generator.util.Utils.upperFirstLetter;
 import static org.jboss.forge.roaster.model.Visibility.PUBLIC;
 
 import java.util.Collections;
@@ -9,8 +11,7 @@ import org.jboss.forge.roaster.model.Visibility;
 
 import com.utility.generator.clazz.part.GeneratedMethod;
 
-
-public class RandomStuffIntMethod implements GeneratedMethod {
+public abstract class RandomStuffMethod implements GeneratedMethod {
 
 	@Override
 	public Visibility visibility() {
@@ -23,18 +24,13 @@ public class RandomStuffIntMethod implements GeneratedMethod {
 	}
 
 	@Override
-	public String returnType() {
-		return "int";
-	}
-
-	@Override
 	public String getName() {
-		return "getRandomInt";
+		return "getRandom" + upperFirstLetter(returnType());
 	}
 
 	@Override
 	public String getBodyTemplate() {
-		return "randomstuff/get-random-int-method.vm";
+		return "randomstuff/get-random-" + lowerFirstLetter(returnType()) + "-method.vm";
 	}
 
 	@Override

@@ -1,0 +1,2 @@
+this.${classField}.set${setName}(getRandom${type}());
+return this;

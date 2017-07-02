@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
+import com.utility.generator.base.clazz.RandomFields;
 import com.utility.generator.base.clazz.ServicePerson;
 import com.utility.generator.base.clazz.SimpleMapper;
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
@@ -84,7 +85,7 @@ public class MapperTesterTest {
 	public void shouldReturnThePathWithOriginClassPackageNameWhenDoNotHavePackageNameInConfiguration() {
 		Configuration configuration = new Configuration();
 		configuration.setClassNameSuffix("Test");
-		configuration.setEntityClass(Person.class);
+		configuration.setEntityClass(RandomFields.class);
 		configuration.setTypeClass(ServicePerson.class);
 		configuration.setMethodName("shouldTestAllParams");
 
@@ -97,7 +98,7 @@ public class MapperTesterTest {
 	public void shouldReturnThePathWithConfiguredPackageNameWhenHavePackageNameInConfiguration() {
 		Configuration configuration = new Configuration();
 		configuration.setClassNameSuffix("Test");
-		configuration.setEntityClass(Person.class);
+		configuration.setEntityClass(RandomFields.class);
 		configuration.setTypeClass(ServicePerson.class);
 		configuration.setMethodName("shouldTestAllParams");
 		configuration.setPackageName("com.generator");

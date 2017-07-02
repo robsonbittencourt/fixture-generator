@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
-import com.utility.generator.classes.fixture.FixtureWithMethod;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.configuration.Configuration;
 
@@ -38,12 +37,12 @@ public class FixtureWithMethodTest {
 
 	@Test
 	public void methodNameShouldBeMethodPrefixWithFieldName() {
-		assertEquals("withName", method.getName());
+		assertEquals("withAge", method.getName());
 	}
 
 	@Test
 	public void shouldReturnTheBodyOfTheMethod() {
-		String body = "this.person.setName(name);\n";
+		String body = "this.person.setAge(age);\n";
 		body += "return this;";
 
 		assertEquals(body, method.body());
@@ -56,12 +55,12 @@ public class FixtureWithMethodTest {
 
 	@Test
 	public void shouldReturnAParameterWithTheSameTypeOfField() {
-		assertEquals(String.class, method.getParameters().get(0).getType());
+		assertEquals(Integer.TYPE, method.getParameters().get(0).getType());
 	}
 
 	@Test
 	public void shouldReturnAParameterWithTheSameNameOfField() {
-		assertEquals("name", method.getParameters().get(0).getName());
+		assertEquals("age", method.getParameters().get(0).getName());
 	}
 
 }

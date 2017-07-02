@@ -11,14 +11,17 @@ import org.junit.Test;
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
 import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedPackage;
+import com.utility.generator.configuration.Configuration;
 
 public class RandomStuffTest {
 
 	private AbstractGeneratedClass generatedClass;
+	private Configuration configuration;
 
 	@Before
 	public void setUp() {
-		generatedClass = new RandomStuff();
+		configuration = new Configuration();
+		generatedClass = new RandomStuff(configuration);
 	}
 
 	@Test
@@ -53,13 +56,13 @@ public class RandomStuffTest {
 	}
 
 	@Test
-	public void classShouldHaveTwoMethods() {
-		assertEquals(2, generatedClass.methods().size());
+	public void classShouldHaveCorrectMethodQuantity() {
+		assertEquals(11, generatedClass.methods().size());
 	}
 
 	@Test
 	public void shouldReturnTheConfiguredPathToClass() {
-		assertEquals("src/test/java/com/utility/generator/randomstuff", generatedClass.classFilePath());
+		assertEquals(configuration.getRootPath() + "com/utility/generator/randomstuff", generatedClass.classFilePath());
 	}
 
 }

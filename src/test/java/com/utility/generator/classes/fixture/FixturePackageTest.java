@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
-import com.utility.generator.classes.fixture.FixturePackage;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.Configuration;
 
