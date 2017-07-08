@@ -1,7 +1,7 @@
 package com.utility.generator.classes.fixture;
 
 import static com.utility.generator.util.Utils.lowerFirstLetter;
-import static org.jboss.forge.roaster.model.Visibility.PUBLIC;
+import static org.jboss.forge.roaster.model.Visibility.PRIVATE;
 
 import org.jboss.forge.roaster.model.Visibility;
 
@@ -17,7 +17,7 @@ public class FixtureBaseField implements GeneratedField {
 	
 	@Override
 	public Visibility visibility() {
-		return PUBLIC;
+		return PRIVATE;
 	}
 
 	@Override

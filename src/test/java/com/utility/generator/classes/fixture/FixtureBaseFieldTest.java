@@ -20,7 +20,7 @@ public class FixtureBaseFieldTest {
 
 	@Test
 	public void shouldBeAPublicField() {
-		assertEquals(Visibility.PUBLIC, field.visibility());
+		assertEquals(Visibility.PRIVATE, field.visibility());
 	}
 
 	@Test
