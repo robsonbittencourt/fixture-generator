@@ -23,6 +23,8 @@ public class RandomFields {
 	private long longField;
 	private Long longObjectField;
 
+	private Person propertyWithoutRandomValue;
+
 	public String getStringField() {
 		return stringField;
 	}
@@ -141,6 +143,14 @@ public class RandomFields {
 
 	public void setLongObjectField(Long longObjectField) {
 		this.longObjectField = longObjectField;
+	}
+
+	public Person getPropertyWithoutRandomValue() {
+		return propertyWithoutRandomValue;
+	}
+
+	public void setPropertyWithoutRandomValue(Person propertyWithoutRandomValue) {
+		this.propertyWithoutRandomValue = propertyWithoutRandomValue;
 	}
 
 }

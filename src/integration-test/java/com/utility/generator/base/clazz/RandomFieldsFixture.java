@@ -187,4 +187,11 @@ public class RandomFieldsFixture {
 		this.randomFields.setLongObjectField(longObjectField);
 		return this;
 	}
+
+	public RandomFieldsFixture withPropertyWithoutRandomValue(
+			Person propertyWithoutRandomValue) {
+		this.randomFields
+				.setPropertyWithoutRandomValue(propertyWithoutRandomValue);
+		return this;
+	}
 }

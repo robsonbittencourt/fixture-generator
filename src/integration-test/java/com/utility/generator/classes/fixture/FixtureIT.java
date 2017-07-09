@@ -31,7 +31,7 @@ public class FixtureIT {
 
 	@Test
 	public void classShouldHaveCorrectMethodQuantity() {
-		assertEquals(33, generatedClass.methods().size());
+		assertEquals(34, generatedClass.methods().size());
 	}
 
 	@Test
@@ -213,9 +213,15 @@ public class FixtureIT {
 		builder.append("	public RandomFieldsFixture withLongObjectField() {\n");
 		builder.append("		this.randomFields.setLongObjectField(getRandomLong());\n");
 		finalizeMethod(builder);
-
+		
 		builder.append("	public RandomFieldsFixture withLongObjectField(Long longObjectField) {\n");
 		builder.append("		this.randomFields.setLongObjectField(longObjectField);\n");
+		finalizeMethod(builder);
+
+		builder.append("	public RandomFieldsFixture withPropertyWithoutRandomValue(\n");
+		builder.append("			Person propertyWithoutRandomValue) {\n");
+		builder.append("		this.randomFields\n");
+		builder.append("				.setPropertyWithoutRandomValue(propertyWithoutRandomValue);\n");
 		builder.append("		return this;\n");
 		builder.append("	}\n");
 		builder.append("}");
