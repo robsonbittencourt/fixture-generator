@@ -1,5 +1,6 @@
 package com.utility.generator.classes.fixture;
 
+import static com.utility.generator.util.Utils.deleteFile;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -9,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,6 +29,16 @@ public class FixtureIT {
 		configuration.setRootPath("src/integration-test/java/");
 
 		generatedClass = new Fixture(RandomFields.class, configuration);
+	}
+
+	@After
+	public void tearDown() {
+		deleteFile("src/integration-test/java/com/utility/generator/randomstuff/RandomStuff.java");
+		deleteFile("src/integration-test/java/com/utility/generator/base/clazz/RandomFieldsFixture.java");
+
+		deleteFile("src/integration-test/java/com/utility/generator/randomstuff");
+		deleteFile("src/integration-test/java/com/utility/generator/base/clazz");
+		deleteFile("src/integration-test/java/com/utility/generator/base");
 	}
 
 	@Test

@@ -1,5 +1,6 @@
 package com.utility.generator.classes.randomstuff;
 
+import static com.utility.generator.util.Utils.deleteFile;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +26,12 @@ public class RandomStuffIT {
 		configuration.setRootPath("src/integration-test/java/");
 
 		generatedClass = new RandomStuff(configuration);
+	}
+
+	@AfterClass
+	public static void tearDown() {
+		deleteFile("src/integration-test/java/com/utility/generator/randomstuff/RandomStuff.java");
+		deleteFile("src/integration-test/java/com/utility/generator/randomstuff");
 	}
 
 	@Test

@@ -1,5 +1,6 @@
 package com.utility.generator.classes.mappertester;
 
+import static com.utility.generator.util.Utils.deleteFile;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +32,16 @@ public class MapperTesterIT {
 		configuration.setRootPath("src/integration-test/java/");
 
 		generatedClass = new MapperTester(SimpleMapper.class, configuration);
+	}
+
+	@AfterClass
+	public static void tearDown() {
+		deleteFile("src/integration-test/java/com/utility/generator/randomstuff/RandomStuff.java");
+		deleteFile("src/integration-test/java/com/utility/generator/base/clazz/SimpleMapperTest.java");
+
+		deleteFile("src/integration-test/java/com/utility/generator/randomstuff");
+		deleteFile("src/integration-test/java/com/utility/generator/base/clazz");
+		deleteFile("src/integration-test/java/com/utility/generator/base");
 	}
 
 	@Test
