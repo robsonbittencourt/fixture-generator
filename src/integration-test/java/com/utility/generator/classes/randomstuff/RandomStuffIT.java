@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.junit.AfterClass;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,8 +28,8 @@ public class RandomStuffIT {
 		generatedClass = new RandomStuff(configuration);
 	}
 
-	@AfterClass
-	public static void tearDown() {
+	@After
+	public void tearDown() {
 		deleteFile("src/integration-test/java/com/utility/generator/randomstuff/RandomStuff.java");
 		deleteFile("src/integration-test/java/com/utility/generator/randomstuff");
 	}

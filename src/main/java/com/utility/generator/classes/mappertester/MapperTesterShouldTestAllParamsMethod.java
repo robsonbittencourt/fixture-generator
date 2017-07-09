@@ -36,7 +36,7 @@ public class MapperTesterShouldTestAllParamsMethod implements GeneratedMethod {
 		for (Method setter : extractSetters(configuration.getEntityClass())) {
 			Class<?> parameterType = setter.getParameters()[0].getType();
 
-			imports.add(new RandomStuffCreator().buildImport(parameterType, true));
+			new RandomStuffCreator().buildImport(parameterType, true, imports);
 		}
 
 		return imports;

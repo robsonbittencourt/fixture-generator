@@ -54,9 +54,11 @@ public class MapperTesterShouldTestAllParamsMethodTest {
 
 		builder.append("Person entity = new Person();\n\n");
 		builder.append("    entity.setAge(getRandomInt());\n");
+		builder.append("    entity.setRandomFields(getRandomRandomFields());\n");
 		builder.append("    entity.setName(getRandomString());\n\n");
 		builder.append("ServicePerson type = new SimpleMapper().toType(entity);\n");
 		builder.append("    assertEquals(entity.getAge(), type.getAge());\n");
+		builder.append("    assertEquals(entity.getRandomFields(), type.getRandomFields());\n");
 		builder.append("    assertEquals(entity.getName(), type.getName());\n");
 
 		assertEquals(builder.toString(), method.body());

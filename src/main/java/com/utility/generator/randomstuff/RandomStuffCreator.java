@@ -13,13 +13,12 @@ import com.utility.generator.clazz.part.GeneratedImport;
 
 public class RandomStuffCreator {
 
-	public GeneratedImport buildImport(Class<?> clazz, boolean isStatic) {
+	public void buildImport(Class<?> clazz, boolean isStatic, List<GeneratedImport> imports) {
 		if (isTypeWithRandomValueAvailable(clazz)) {
 			String qualifiedName = buildQualifiedName(clazz);
-			return new GeneratedImport(qualifiedName, isStatic);
+			
+			imports.add(new GeneratedImport(qualifiedName, isStatic));
 		}
-
-		return null;
 	}
 
 	private String buildQualifiedName(Class<?> clazz) {

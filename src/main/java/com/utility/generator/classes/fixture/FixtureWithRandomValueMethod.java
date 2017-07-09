@@ -33,7 +33,7 @@ public class FixtureWithRandomValueMethod implements GeneratedMethod {
 	public List<GeneratedImport> imports() {
 		List<GeneratedImport> imports = new ArrayList<>();
 		
-		imports.add(new RandomStuffCreator().buildImport(field.getType(), true));
+		new RandomStuffCreator().buildImport(field.getType(), true, imports);
 
 		return imports;
 	}

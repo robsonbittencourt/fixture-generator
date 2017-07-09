@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class Utils {
+public final class Utils {
 
 	private Utils() {
 		throw new IllegalStateException("Utility class");

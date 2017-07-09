@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.junit.AfterClass;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,8 +34,8 @@ public class MapperTesterIT {
 		generatedClass = new MapperTester(SimpleMapper.class, configuration);
 	}
 
-	@AfterClass
-	public static void tearDown() {
+	@After
+	public void tearDown() {
 		deleteFile("src/integration-test/java/com/utility/generator/randomstuff/RandomStuff.java");
 		deleteFile("src/integration-test/java/com/utility/generator/base/clazz/SimpleMapperTest.java");
 
@@ -61,9 +61,11 @@ public class MapperTesterIT {
 		builder.append("	public void shouldTestAllParams() {\n");
 		builder.append("		Person entity = new Person();\n");
 		builder.append("		entity.setAge(getRandomInt());\n");
+		builder.append("		entity.setRandomFields(getRandomRandomFields());\n");
 		builder.append("		entity.setName(getRandomString());\n");
 		builder.append("		ServicePerson type = new SimpleMapper().toType(entity);\n");
 		builder.append("		assertEquals(entity.getAge(), type.getAge());\n");
+		builder.append("		assertEquals(entity.getRandomFields(), type.getRandomFields());\n");
 		builder.append("		assertEquals(entity.getName(), type.getName());\n");
 		builder.append("	}\n");
 		builder.append("}");
