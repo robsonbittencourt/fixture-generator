@@ -20,6 +20,7 @@ import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.Configuration;
+import com.utility.generator.validator.FixtureCandidateValidator;
 
 public class Fixture extends AbstractGeneratedClass {
 
@@ -27,6 +28,8 @@ public class Fixture extends AbstractGeneratedClass {
 	private Configuration configuration;
 
 	public Fixture(Class<?> originClass, Configuration configuration) {
+		new FixtureCandidateValidator().validate(originClass);
+
 		this.originClass = originClass;
 		this.configuration = configuration;
 	}

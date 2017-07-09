@@ -1,27 +1,43 @@
 package com.utility.generator.classes.fixture;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import com.utility.generator.base.clazz.RandomFields;
+import com.utility.generator.base.clazz.SimpleMapper;
 import com.utility.generator.clazz.part.AbstractGeneratedClass;
 import com.utility.generator.clazz.part.GeneratedField;
 import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedPackage;
 import com.utility.generator.configuration.Configuration;
+import com.utility.generator.exception.FixtureGeneratorException;
 
 public class FixtureTest {
+
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
 
 	private AbstractGeneratedClass generatedClass;
 
 	@Before
 	public void setUp() {
 		generatedClass = new Fixture(RandomFields.class, new Configuration());
+	}
+
+	@Test
+	public void shouldValidateIfClassCanBeAFixture() {
+		thrown.expect(FixtureGeneratorException.class);
+		thrown.expectMessage(containsString("Class does not contain at least one property to set method"));
+
+		generatedClass = new Fixture(SimpleMapper.class, new Configuration());
 	}
 
 	@Test
