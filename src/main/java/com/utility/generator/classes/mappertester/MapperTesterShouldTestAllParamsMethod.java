@@ -1,5 +1,7 @@
 package com.utility.generator.classes.mappertester;
 
+import static com.utility.generator.util.Utils.extractSetters;
+import static com.utility.generator.util.Utils.upperFirstLetter;
 import static org.jboss.forge.roaster.model.Visibility.PUBLIC;
 
 import java.lang.reflect.Method;
@@ -11,17 +13,33 @@ import java.util.Map;
 import org.jboss.forge.roaster.model.Visibility;
 
 import com.utility.generator.clazz.part.GeneratedAnnotation;
+import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.commons.annotation.TestAnnotation;
 import com.utility.generator.configuration.Configuration;
-
+import com.utility.generator.randomstuff.RandomStuffCreator;
 
 public class MapperTesterShouldTestAllParamsMethod implements GeneratedMethod {
 
+	private Class<?> originClass;
 	private Configuration configuration;
 
-	public MapperTesterShouldTestAllParamsMethod(Configuration configuration) {
+	public MapperTesterShouldTestAllParamsMethod(Class<?> originClass, Configuration configuration) {
+		this.originClass = originClass;
 		this.configuration = configuration;
+	}
+
+	@Override
+	public List<GeneratedImport> imports() {
+		List<GeneratedImport> imports = new ArrayList<>();
+
+		for (Method setter : extractSetters(configuration.getEntityClass())) {
+			Class<?> parameterType = setter.getParameters()[0].getType();
+
+			imports.add(new RandomStuffCreator().buildImport(parameterType, true));
+		}
+
+		return imports;
 	}
 
 	@Override
@@ -60,28 +78,26 @@ public class MapperTesterShouldTestAllParamsMethod implements GeneratedMethod {
 		variables.put("fields", buildFields());
 		variables.put("type", configuration.getTypeClass().getSimpleName());
 		variables.put("entity", configuration.getEntityClass().getSimpleName());
+		variables.put("mapper", originClass.getSimpleName());
 
 		return variables;
 	}
 
 	private List<MapperTesterEntityFields> buildFields() {
 		List<MapperTesterEntityFields> fields = new ArrayList<>();
-		
-		for (Method entityMethod : configuration.getEntityClass().getDeclaredMethods()) {
-			addSettersAsFields(fields, entityMethod);
+
+		for (Method setter : extractSetters(configuration.getEntityClass())) {
+			addSettersAsField(setter, fields);
 		}
-		
+
 		return fields;
 	}
 
-	private void addSettersAsFields(List<MapperTesterEntityFields> fields, Method entityMethod) {
-		String name = entityMethod.getName();
-		
-		if (name.startsWith("set")) {
-			String fieldName = name.replace("set", "");
-			String fieldType = entityMethod.getParameters()[0].getType().getSimpleName();
-			fields.add(new MapperTesterEntityFields(fieldName, fieldType));
-		}
+	private void addSettersAsField(Method setter, List<MapperTesterEntityFields> fields) {
+		String fieldName = setter.getName().replace("set", "");
+		String fieldType = setter.getParameters()[0].getType().getSimpleName();
+
+		fields.add(new MapperTesterEntityFields(fieldName, upperFirstLetter(fieldType)));
 	}
 
 }

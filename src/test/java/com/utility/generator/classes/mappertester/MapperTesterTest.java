@@ -45,11 +45,10 @@ public class MapperTesterTest {
 	public void shouldReturnTheCorrectImports() {
 		List<GeneratedImport> generatedImports = generatedClass.imports();
 
-		assertEquals(4, generatedImports.size());
+		assertEquals(3, generatedImports.size());
 		assertEquals("com.utility.generator.base.clazz.SimpleMapper", generatedImports.get(0).qualifiedName());
-		assertEquals("java.util.List", generatedImports.get(1).qualifiedName());
-		assertEquals("java.util.ArrayList", generatedImports.get(2).qualifiedName());
-		assertEquals("org.junit.Test", generatedImports.get(3).qualifiedName());
+		assertEquals("org.junit.Test", generatedImports.get(1).qualifiedName());
+		assertEquals("org.junit.Assert.assertEquals", generatedImports.get(2).qualifiedName());
 	}
 
 	@Test

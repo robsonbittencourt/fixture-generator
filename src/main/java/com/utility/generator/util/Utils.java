@@ -1,6 +1,11 @@
 package com.utility.generator.util;
 
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
+
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.List;
 
 public class Utils {
 
@@ -29,6 +34,11 @@ public class Utils {
 
 	public static String getPathFromPackageName(String packageName) {
 		return packageName.replace(".", "/");
+	}
+
+	public static List<Method> extractSetters(Class<?> clazz) {
+		return stream(clazz.getDeclaredMethods()).filter(method -> method.getName().startsWith("set"))
+				.collect(toList());
 	}
 
 }

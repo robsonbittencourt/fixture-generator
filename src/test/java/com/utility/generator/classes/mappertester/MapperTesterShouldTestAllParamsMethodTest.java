@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import com.utility.generator.base.clazz.Person;
 import com.utility.generator.base.clazz.ServicePerson;
+import com.utility.generator.base.clazz.SimpleMapper;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.configuration.Configuration;
 
@@ -24,7 +25,7 @@ public class MapperTesterShouldTestAllParamsMethodTest {
 		configuration.setTypeClass(ServicePerson.class);
 		configuration.setMethodName("shouldTestAllParams");
 
-		method = new MapperTesterShouldTestAllParamsMethod(configuration);
+		method = new MapperTesterShouldTestAllParamsMethod(SimpleMapper.class, configuration);
 	}
 
 	@Test
@@ -52,9 +53,9 @@ public class MapperTesterShouldTestAllParamsMethodTest {
 		StringBuilder builder = new StringBuilder();
 
 		builder.append("Person entity = new Person();\n\n");
-		builder.append("    entity.setAge(getRandomint());\n");
+		builder.append("    entity.setAge(getRandomInt());\n");
 		builder.append("    entity.setName(getRandomString());\n\n");
-		builder.append("ServicePerson type = mapper.toType(entity);\n");
+		builder.append("ServicePerson type = new SimpleMapper().toType(entity);\n");
 		builder.append("    assertEquals(entity.getAge(), type.getAge());\n");
 		builder.append("    assertEquals(entity.getName(), type.getName());\n");
 

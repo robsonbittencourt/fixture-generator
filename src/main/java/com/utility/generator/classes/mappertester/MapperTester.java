@@ -36,9 +36,8 @@ public class MapperTester extends AbstractGeneratedClass {
 		List<GeneratedImport> imports = new ArrayList<>();
 
 		imports.add(new GeneratedImport(originClass));
-		imports.add(new GeneratedImport(List.class));
-		imports.add(new GeneratedImport(ArrayList.class));
 		imports.add(new GeneratedImport(Test.class));
+		imports.add(new GeneratedImport("org.junit.Assert.assertEquals", true));
 
 		return imports;
 	}
@@ -57,7 +56,7 @@ public class MapperTester extends AbstractGeneratedClass {
 	public List<GeneratedMethod> methods() {
 		List<GeneratedMethod> methods = new ArrayList<>();
 
-		methods.add(new MapperTesterShouldTestAllParamsMethod(configuration));
+		methods.add(new MapperTesterShouldTestAllParamsMethod(originClass, configuration));
 
 		return methods;
 	}

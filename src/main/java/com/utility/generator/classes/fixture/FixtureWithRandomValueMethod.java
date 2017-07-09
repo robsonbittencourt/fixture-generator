@@ -14,6 +14,7 @@ import org.jboss.forge.roaster.model.Visibility;
 import com.utility.generator.clazz.part.GeneratedImport;
 import com.utility.generator.clazz.part.GeneratedMethod;
 import com.utility.generator.configuration.Configuration;
+import com.utility.generator.randomstuff.RandomStuffCreator;
 
 
 public class FixtureWithRandomValueMethod implements GeneratedMethod {
@@ -32,11 +33,7 @@ public class FixtureWithRandomValueMethod implements GeneratedMethod {
 	public List<GeneratedImport> imports() {
 		List<GeneratedImport> imports = new ArrayList<>();
 		
-		String qualifiedPrefix = "com.utility.generator.randomstuff.RandomStuff.getRandom";
-		String type = upperFirstLetter(field.getType().getSimpleName());
-		String qualifiedName = qualifiedPrefix + type;
-
-		imports.add(new GeneratedImport(qualifiedName, true));
+		imports.add(new RandomStuffCreator().buildImport(field.getType(), true));
 
 		return imports;
 	}
