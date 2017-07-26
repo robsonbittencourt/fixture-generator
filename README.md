@@ -1,5 +1,5 @@
-# utility-generator  
-[![Build Status](https://travis-ci.org/robsonbittencourt/utility-generator.svg?branch=master)](https://travis-ci.org/robsonbittencourt/fixture-generator) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.github.robsonbittencourt%3Autility-generator)](https://sonarcloud.io/dashboard?id=com.github.robsonbittencourt%3Autility-generator) [![Coverage](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=com.github.robsonbittencourt%3Autility-generator) [![Vulnerabilities](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=vulnerabilities)](https://sonarcloud.io/project/issues?id=com.github.robsonbittencourt%3Autility-generator&resolved=false&types=VULNERABILITY) [![Bugs](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=bugs)](https://sonarcloud.io/project/issues?id=com.github.robsonbittencourt%3Autility-generator&resolved=false&types=BUG) [![Code Smells](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=code_smells)](https://sonarcloud.io/project/issues?id=com.github.robsonbittencourt%3Autility-generator&resolved=false&types=CODE_SMELL)
+# Utility Generator  
+[![Build Status](https://travis-ci.org/robsonbittencourt/utility-generator.svg?branch=master)](https://travis-ci.org/robsonbittencourt/utility-generator) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.github.robsonbittencourt%3Autility-generator)](https://sonarcloud.io/dashboard?id=com.github.robsonbittencourt%3Autility-generator) [![Coverage](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=com.github.robsonbittencourt%3Autility-generator) [![Vulnerabilities](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=vulnerabilities)](https://sonarcloud.io/project/issues?id=com.github.robsonbittencourt%3Autility-generator&resolved=false&types=VULNERABILITY) [![Bugs](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=bugs)](https://sonarcloud.io/project/issues?id=com.github.robsonbittencourt%3Autility-generator&resolved=false&types=BUG) [![Code Smells](https://sonarcloud.io/api/badges/measure?key=com.github.robsonbittencourt%3Autility-generator&metric=code_smells)](https://sonarcloud.io/project/issues?id=com.github.robsonbittencourt%3Autility-generator&resolved=false&types=CODE_SMELL)
 
 > Generate utility class to use in your project
 
@@ -60,7 +60,7 @@ public class PersonFixture {
   }
 
   public List<Person> buildList(Integer amount) {
-	  List<Person> persons = new ArrayList<Person>();
+	  List<Person> persons = new ArrayList<>();
 
 	  for (int i = 0; i < amount; i++) {
 		  persons.add(this.build());

@@ -1,0 +1,1 @@
+return BigDecimal.valueOf(RandomUtils.nextDouble());

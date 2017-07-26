@@ -1,0 +1,10 @@
+${entity} entity = new ${entity}();
+
+#foreach( $field in $fields )
+    entity.set${field.name}(getRandom${field.type}());
+#end
+
+${type} type = new ${mapper}().toType(entity);
+#foreach( $field in $fields )
+    assertEquals(entity.get${field.name}(), type.get${field.name}());
+#end

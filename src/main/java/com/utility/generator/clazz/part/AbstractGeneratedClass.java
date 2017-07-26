@@ -12,11 +12,6 @@ public abstract class AbstractGeneratedClass implements GeneratedClass {
 		return Collections.emptyList();
 	}
 
-	@Override
-	public String toString() {
-		return new JavaClassSourceWrapper(this).toString();
-	}
-
 	public void generate() {
 		String source = new JavaClassSourceWrapper(this).toString();
 

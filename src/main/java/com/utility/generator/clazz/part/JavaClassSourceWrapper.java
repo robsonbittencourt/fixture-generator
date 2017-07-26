@@ -29,10 +29,14 @@ public class JavaClassSourceWrapper {
 	}
 
 	private void setImports(GeneratedClass generatedClass) {
-		for (Class<?> generatedImport : generatedClass.imports().classesToImport()) {
-			String qualifiedName = generatedImport.getPackage().getName() + "." + generatedImport.getSimpleName();
+		for (GeneratedImport generatedImport : generatedClass.imports()) {
+			classSource.addImport(generatedImport.qualifiedName()).setStatic(generatedImport.isStatic());
+		}
 
-			classSource.addImport(qualifiedName);
+		for (GeneratedMethod generatedMethod : generatedClass.methods()) {
+			for (GeneratedImport generatedImport : generatedMethod.imports()) {
+				classSource.addImport(generatedImport.qualifiedName()).setStatic(generatedImport.isStatic());
+			}
 		}
 	}
 
@@ -59,7 +63,14 @@ public class JavaClassSourceWrapper {
 				.setReturnType(generatedMethod.returnType()).setName(generatedMethod.getName())
 				.setBody(generatedMethod.body());
 
+		addAnnotations(generatedMethod, methodSource);
 		addParameterOnMethod(generatedMethod, methodSource);
+	}
+
+	private void addAnnotations(GeneratedMethod generatedMethod, MethodSource<JavaClassSource> methodSource) {
+		for (GeneratedAnnotation annotation : generatedMethod.annotations()) {
+			methodSource.addAnnotation(annotation.name());
+		}
 	}
 
 	private void addParameterOnMethod(GeneratedMethod generatedMethod, MethodSource<JavaClassSource> methodSource) {

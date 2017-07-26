@@ -1,0 +1,24 @@
+final Random random = new Random();
+final StringBuilder sb = new StringBuilder();
+
+int stringLength = 10;
+
+for (int i = 0; i < stringLength; i++) {
+	switch (random.nextInt(3)) {
+		case 0:
+			// 48 = 0, 57 = 9
+			sb.append(new Character((char) (48 + random.nextInt((57 + 1 - 48)))));
+			break;
+		case 1:
+			// 97 = a, 122 = z
+			sb.append(new Character((char) (97 + random.nextInt((122 + 1 - 97)))));
+			break;
+		case 2:
+			// 65 = A, 90 = Z
+			sb.append(new Character((char) (65 + random.nextInt((90 + 1 - 65)))));
+			break;
+		default:
+			break;
+	}
+}
+return sb.toString();

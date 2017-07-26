@@ -1,9 +1,19 @@
 package com.utility.generator.base.clazz;
 
+
 public class Person {
 
-	private String name;
 	private int age;
+	private String name;
+	private RandomFields randomFields;
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 
 	public String getName() {
 		return name;
@@ -13,12 +23,12 @@ public class Person {
 		this.name = name;
 	}
 
-	public int getAge() {
-		return age;
+	public RandomFields getRandomFields() {
+		return randomFields;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setRandomFields(RandomFields randomFields) {
+		this.randomFields = randomFields;
 	}
 
 }
